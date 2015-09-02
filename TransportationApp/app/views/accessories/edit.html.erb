@@ -1,0 +1,24 @@
+<h3>Accessoires </h3>
+
+<%= form_for @accessory do |t| %>
+	<% if @accessory.errors.any? %>
+		<h3>These errors prohibited this <%= @accessory.class %> from being saved</h3>
+		<ul>
+		<% for msg in @accessory.errors.full_messages %>
+			<li><%= msg %></li>
+			<% end -%>
+		</ul>
+	<% end -%>
+	
+	<label>Name of Accessory</label><br/>
+	<%= t.text_field :name %><br/>
+
+	<label>Cost </label><br/>
+	<%= t.text_field :cost %><br/>
+
+	<label>Model</label></br>
+	<%= t.text_field :model %><br/><br/>
+
+	<%= t.submit "Submit"%><br/>
+	
+<% end -%>

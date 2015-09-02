@@ -1,0 +1,54 @@
+<h3>Listing Drivers</h3>
+
+<br/>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Blood Group</th>
+			<th>Mobile No</th>
+			<th>Emergency Contact</th>
+			<th>Address</th>
+			<th>DL_Expiration</th>
+			<th>Back Ground Check</th>
+			<th>Action</th>
+        </tr>
+	</thead>
+
+    <tbody>
+    	<% @drivers.each_with_index do |driver,index| %>
+          <tr>
+          	    <td><%= index + 1 %></td>
+          	    <td><%= driver.name %></td>
+          	    <td><%= driver.age %></td>
+          	    <td><%= driver.blood_group %></td>
+          	    <td><%= driver.mobile_no %></td>
+          	    <td><%= driver.emergency_contact %></td>
+          	    <td><%= driver.address %></td>
+          	    <td><%= driver.dl_expiration.strftime("%d %b %Y ") %></td>
+          	    <td><%= driver.back_ground_check %></td>
+          	    <td><%= link_to "Show", driver_path(driver.id) %> |
+          	    	<%= link_to "Edit", edit_driver_path(driver.id) %> |
+          	    	<%= link_to "Delete", driver_path(driver.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
+
+          </tr>
+
+          <% end %>
+
+    </tbody>
+
+	</table>
+
+	<%= link_to "Add Driver", new_driver_path %>
+
+<!--
+<ul>
+	<% for driver in @drivers %>
+	   <li><%= Driver.name %> - <%= link_to "Edit", edit_driver_path(driver.id) %> - <%= link_to "Delete", driver_path(driver.id), method: :delete, data: {confirm: "Are you sure?"} %></li>
+	<% end %>
+</ul>
+
+-->

@@ -1,0 +1,11 @@
+<h3><%= @client.name %></h3>
+
+
+
+<%= link_to "Edit",edit_client_path(@client.id) %> | <%= link_to "Delete", client_path(@client.id),method: :delete, data: {confirm: "Are you sure?"} %>
+<hr/>
+
+Point of Contact : <%= @client.p_o_c %><br/>
+Email : <%= @client.email %><br/>
+Phone : <%= @client.phone %><br/>
+Location : <%= @client.location %><br/> 

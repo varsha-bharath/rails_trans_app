@@ -1,0 +1,23 @@
+
+<h3>Edit Vehicles Record</h3>
+
+<%= form_for @vehicle_record do |t| %>
+	<% if @vehicle_record.errors.any? %>
+		<h3>These errors prohibited this <%= @vehicle_record.class %> from being saved</h3>
+		<ul>
+		<% for msg in @vehicle_record.errors.full_messages %>
+			<li><%= msg %></li>
+			<% end -%>
+		</ul>
+	<% end -%>
+
+
+	<label>Record Type </label><br/>
+	<%= t.select :record_type,["RC","Emission","Insurance"],prompt:"select_record"%><br/>
+
+	<label>Expiration Date</label></br>
+	<%= t.date_select :expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+	
+	<%= t.submit "Submit"%>
+
+<% end -%>
