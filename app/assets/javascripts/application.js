@@ -11,6 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+<<<<<<< HEAD
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+
+
+=======
+//= require jquery_ujs
+>>>>>>> master

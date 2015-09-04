@@ -12,8 +12,10 @@
 			<th>Mobile No</th>
 			<th>Emergency Contact</th>
 			<th>Address</th>
+      <th>Driving Licence</th>
 			<th>DL_Expiration</th>
 			<th>Back Ground Check</th>
+      <th>Image</th>
 			<th>Action</th>
         </tr>
 	</thead>
@@ -28,8 +30,10 @@
           	    <td><%= driver.mobile_no %></td>
           	    <td><%= driver.emergency_contact %></td>
           	    <td><%= driver.address %></td>
+                <td><%= driver.image_dl %></td>
           	    <td><%= driver.dl_expiration.strftime("%d %b %Y ") %></td>
           	    <td><%= driver.back_ground_check %></td>
+                <td><%= driver.image_p %></td>
           	    <td><%= link_to "Show", driver_path(driver.id) %> |
           	    	<%= link_to "Edit", edit_driver_path(driver.id) %> |
           	    	<%= link_to "Delete", driver_path(driver.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
@@ -41,14 +45,9 @@
     </tbody>
 
 	</table>
+  <br/>
 
-	<%= link_to "Add Driver", new_driver_path %>
+	<%= link_to "Add Driver", new_driver_path %><br/></br/>
 
-<!--
-<ul>
-	<% for driver in @drivers %>
-	   <li><%= Driver.name %> - <%= link_to "Edit", edit_driver_path(driver.id) %> - <%= link_to "Delete", driver_path(driver.id), method: :delete, data: {confirm: "Are you sure?"} %></li>
-	<% end %>
-</ul>
+  <%= link_to "Vehicle Details",vehicles_path %>
 
--->

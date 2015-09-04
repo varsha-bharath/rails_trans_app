@@ -1,0 +1,10 @@
+<%# link_to "Edit",edit_vehicle_record_path(@vehicle_record.id) %> |
+<%# link_to "Delete",vehicle_record_path(@vehicle_record.id), method: :delete,data:{confirm: "Are you sure"}%>
+<%= link_to "Vehicle Details",vehicles_path %>
+
+<h3>Vehicle Record details</h3>
+<ul>
+	<li>Name:<%= @vehicle_record.record_type %></li>
+	<li>Type of the vehicle: <%= @vehicle_record.expiration_date %><br/></li>
+	
+</ul>

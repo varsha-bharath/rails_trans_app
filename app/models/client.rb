@@ -6,6 +6,6 @@ class Client < ActiveRecord::Base
 
   validates_numericality_of :phone
 
-  validates_length_of :phone, maximum: 10, minimum: 10
+  validates_length_of :phone, is: 10
 
 end

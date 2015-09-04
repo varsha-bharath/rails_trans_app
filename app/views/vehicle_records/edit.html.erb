@@ -1,7 +1,9 @@
 
 <h3>Edit Vehicles Record</h3>
 
+
 <%= form_for @vehicle_record, html: { multipart: true } do |t| %>
+
 	<% if @vehicle_record.errors.any? %>
 		<h3>These errors prohibited this <%= @vehicle_record.class %> from being saved</h3>
 		<ul>

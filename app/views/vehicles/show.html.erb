@@ -1,6 +1,6 @@
 <%= link_to "Edit",edit_vehicle_path(@vehicle.id) %> |
 <%= link_to "Delete",vehicle_path(@vehicle.id), method: :delete,data:{confirm: "Are you sure"}%>
-
+<%= link_to "Back", vehicles_path %>
 
 <h3>Vehicle details</h3>
 <ul>
@@ -9,6 +9,7 @@
 	<li>Registration number: <%= @vehicle.reg_no %><br/></li>
 
 </ul>
+
 <!--
 <h4>Vehicle Record Details </h4>
 	<%# for vehicle_record in @vehicle.vehicle_records %> 
@@ -20,6 +21,10 @@
 </ul>
 
 -->
+
+<hr>
+
+
 <h4>Vehicle Record Details </h4>
 <table border="1">
 	<thead>
@@ -46,7 +51,7 @@
 		</tbody>
 <% end %>
 </table>
-
+<hr>
 <h4>Vehicle Payment Details </h4>
 	<% for vehicle_payment in @vehicle.vehicle_payments %> 
 <ul>
@@ -57,19 +62,67 @@
 	<li><%= image_tag vehicle_payment.image.url %></li>
 
 </ul>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>Payment Type</th>
+			<th>Amount Paid</th>
+			<th>Payment Date</th>
+			<th>Mode of Payment</th>
+			<th>Actions </th>
+			
+		</tr>
+	</thead>
+		<tbody>
+			<tr>
+				<% for vehicle_payment in @vehicle.vehicle_payments %> 
+					<td> <%= vehicle_payment.amount_type %></td>
+					<td><%= vehicle_payment.amount_paid %></td>	
+					<td><%= vehicle_payment.payment_date %></td>
+					<td><%= vehicle_payment.mode_of_payment %></td>
+					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%>
+					</td>
+			</tr>
+		</tbody>
+
 <% end %>
+</table>
+
+<hr>
+
 <h4>Accessories Details</h4>
-	<% for accessory in @vehicle.accessories %> 
-<ul>
-	<li>Name Of Accessory: <%= accessory.name %><br/></li>
-	<li>Cost: <%= accessory.cost %><br/></li>
-
-</ul>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Name Of Accessory</th>
+			<th>Cost:</th>
+			<th>Actions </th>
+			
+		</tr>
+	</thead>
+		<tbody>
+			<tr>
+				<% for accessory in @vehicle.accessories %> 
+					<td><%= accessory.name %></td>
+					<td><%= accessory.cost %></td>	
+					<td><%= link_to "Show",accessory_path(accessory.vehicle_id) %> |
+						<%= link_to "Edit",edit_accessory_path(accessory.vehicle_id) %> |
+						<%= link_to "Delete",accessory_path(accessory.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%>
+			</td>
+		
+			</tr>
+		</tbody>
 <% end %>
-
+</table>
+<hr>
 <h3>Add Vehicle Record </h3>
 
+
 <%= form_for @vehicle_record , html: { multipart: true } do |t|%>
+
 	<% if @vehicle_record.errors.any? %>
 		<h3>These errors prohibited this <%= @vehicle_record.class %> from being saved</h3>
 		<ul>
@@ -80,9 +133,9 @@
 	<% end -%>
 
 	<label>Record Type </label><br/>
-	<%= t.select :record_type,["RC","Emission","Insurance"],prompt:"select_record"%><br/>
+	<%= t.select :record_type,["RC","Emission","Insurance"],prompt:"select_record"%><br/><br/>
 
-	<label>Expiration Date</label></br>
+	<label>Expiration Date</label><br/>
 	<%= t.date_select :expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
 	
 	<label>Record Image </label><br/>
@@ -95,10 +148,12 @@
 
 <% end -%>
 
-
+<hr>
 <h3>Add Vehicle Payment Details </h3>
 
+
 <%= form_for @vehicle_payment, html: { multipart: true } do |t| %>
+
 	<% if @vehicle_payment.errors.any? %>
 		<h3>These errors prohibited this <%= @vehicle_payment.class %> from being saved</h3>
 		<ul>
@@ -118,16 +173,36 @@
 	<%= t.date_select :payment_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
 	
 	<label>Mode of Payment</label><br/>
+
 	<%= t.select :mode_of_payment,["Cash","Card"],prompt:"select_record"%><br/>
 	<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
 
 	<label>Payment Image </label><br/>
 	<%= t.file_field :image %><br/>
 
-	<%= t.submit "Submit"%><br/>
+	<%= t.submit %><br/>
 
 <% end -%>
+<hr>
+<h3>Add Accessory </h3>
 
+<%= form_for Accessory.new do |t| %>
+	
+	<label>Name of Accessory</label><br/>
+	<%= t.text_field :name %><br/>
+
+	<label>Cost </label><br/>
+	<%= t.text_field :cost %><br/>
+
+	<label>Model</label></br>
+	<%= t.text_field :model %><br/><br/>
+
+	<%= t.hidden_field :vehicle_id,value: @vehicle.id %>
+<br/>
+
+	<%= t.submit %><br/>
+
+<% end -%>
 
 <%# link_to "Add Vehicle Record ",new_vehicle_record_path %><br/>
 
@@ -139,5 +214,6 @@
 <%= link_to @vehicle.vehicle_records,vehicle_records_path(@vehicle) %>
 
 <h3>Total Vehicle Records <%= @vehicle.vehicle_records.count%></h3>
+
 -->
 <%= link_to "Back", vehicles_path %>
