@@ -1,6 +1,10 @@
 <h3>Add New Driver</h3>
 
 <%= form_for @driver, :html =>{multipart: true} do |f| %>
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 
    <% if @driver.errors.any? %>
    <ul>
@@ -33,12 +37,25 @@
 	<%= f.text_area :address %><br/>
 
 
+<<<<<<< HEAD
+	<label>Driving Licence</label>
+	<%= f.file_field :image_dl %><br/>
+
+
+
+    <label>DL_Expiration:</label>
+=======
     <label>DL_Expiration:</label><br/>
+>>>>>>> master
 	<%= f.date_select :dl_expiration, order: [:day, :month, :year],include_blank: true %><br/>
 
 
 	<label>Back Ground Check:</label><br/>
 	<%= f.select :back_ground_check, ["true", "false"], prompt: "Select" %><br/>
+
+	<label>Image</label>
+	<%= f.file_field :image_p %><br/>
+
 
 	<%= f.submit %>
 

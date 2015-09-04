@@ -1,4 +1,9 @@
 class Driver < ActiveRecord::Base
+
+	has_attached_file :image_p
+	has_attached_file :image_dl
+    
+    validates_attachment_content_type :image_p, :image_dl, content_type: /\Aimage\/.*\Z/
 	
 	has_many :vehicles, through: :vehicle_drivers
 
