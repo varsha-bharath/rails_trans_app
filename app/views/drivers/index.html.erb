@@ -41,14 +41,9 @@
     </tbody>
 
 	</table>
+  <br/>
 
-	<%= link_to "Add Driver", new_driver_path %>
+	<%= link_to "Add Driver", new_driver_path %><br/></br/>
 
-<!--
-<ul>
-	<% for driver in @drivers %>
-	   <li><%= Driver.name %> - <%= link_to "Edit", edit_driver_path(driver.id) %> - <%= link_to "Delete", driver_path(driver.id), method: :delete, data: {confirm: "Are you sure?"} %></li>
-	<% end %>
-</ul>
+  <%= link_to "Vehicle Details",vehicles_path %>
 
--->
