@@ -1,6 +1,6 @@
 <h3>Add New Driver</h3>
 
-<%= form_for @driver do |f| %>
+<%= form_for @driver, :html =>{multipart: true} do |f| %>
 
    <% if @driver.errors.any? %>
    <ul>
