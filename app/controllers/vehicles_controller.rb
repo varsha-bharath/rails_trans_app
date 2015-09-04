@@ -50,7 +50,7 @@ class VehiclesController < ApplicationController
 	end
 
 def vehicle_params
-		params[:vehicle].permit(:name,:vehicle_type,:reg_no,:chassis_no,:engine_no)
+
 	end 
 end
 

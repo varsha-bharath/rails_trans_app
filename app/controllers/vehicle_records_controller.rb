@@ -51,7 +51,7 @@ def index
 	private 
 
 	def vehicle_record_params
-		params[:vehicle_record].permit(:record_type,:expiration_date,:vehicle_id)
+		
 	end 
 
 end

@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904113838) do
+
 
   create_table "accessories", force: :cascade do |t|
     t.string   "name"
@@ -83,16 +83,16 @@ ActiveRecord::Schema.define(version: 20150904113838) do
     t.date     "payment_date"
     t.string   "mode_of_payment"
     t.integer  "vehicle_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    
+    
   end
 
   create_table "vehicle_records", force: :cascade do |t|
     t.string   "record_type"
     t.date     "expiration_date"
     t.integer  "vehicle_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    
+    
   end
 
   create_table "vehicle_routes", force: :cascade do |t|
