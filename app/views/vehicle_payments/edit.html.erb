@@ -2,6 +2,8 @@
 <h3>Vehicles Payment </h3>
 
 
+<%= form_for @vehicle_payment, html: { multipart: true } do |t| %>
+
 	<% if @vehicle_payment.errors.any? %>
 		<h3>These errors prohibited this <%= @vehicle_payment.class %> from being saved</h3>
 		<ul>
@@ -22,6 +24,9 @@
 	
 	<label>Mode of Payment</label><br/>
 	<%= t.select :mode_of_payment,["Cash","Card"],prompt:"select_record"%><br/>
+
+	<label>Payment Image </label><br/>
+	<%= t.file_field :image %><br/>
 
 	<%= t.submit "Submit"%><br/>
 

@@ -6,6 +6,7 @@ class Vehicle < ActiveRecord::Base
 	validates_uniqueness_of :reg_no,:chassis_no,:engine_no
 
 	before_destroy :delete_vehicle_records
+	
 	private
 	
 	def delete_vehicle_records

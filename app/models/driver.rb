@@ -11,6 +11,6 @@ class Driver < ActiveRecord::Base
 
 	validates_numericality_of :mobile_no, :emergency_contact
 
-	validates_length_of :mobile_no, :emergency_contact,is: 10
 
+	validates_length_of :mobile_no, :emergency_contact,is: 10
 end
