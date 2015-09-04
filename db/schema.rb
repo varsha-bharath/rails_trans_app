@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902140806) do
+ActiveRecord::Schema.define(version: 20150904090226) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150902140806) do
     t.string   "name"
     t.string   "p_o_c"
     t.string   "email"
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20150902140806) do
     t.string   "name"
     t.integer  "age"
     t.string   "blood_group"
-    t.integer  "mobile_no"
-    t.integer  "emergency_contact"
+    t.string   "mobile_no"
+    t.string   "emergency_contact"
     t.string   "address"
     t.date     "dl_expiration"
     t.boolean  "back_ground_check", default: false
@@ -52,6 +52,20 @@ ActiveRecord::Schema.define(version: 20150902140806) do
     t.string   "possition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicle_clients", force: :cascade do |t|
+    t.integer  "vehicles_id"
+    t.integer  "clients_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "vehicle_drivers", force: :cascade do |t|
+    t.integer  "vehicles_id"
+    t.integer  "drivers_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "vehicle_payments", force: :cascade do |t|
@@ -70,6 +84,13 @@ ActiveRecord::Schema.define(version: 20150902140806) do
     t.integer  "vehicle_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "vehicle_routes", force: :cascade do |t|
+    t.integer  "vehicles_id"
+    t.integer  "routes_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "vehicles", force: :cascade do |t|

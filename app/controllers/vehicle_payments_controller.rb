@@ -5,7 +5,13 @@ def index
 	end
 
 	def show
-		@vehicle_payment = VehiclePayment.find(params[:id])
+		
+		begin
+			@vehicle_payment = VehiclePayment.find_by(vehicle_id: params[:id])
+		rescue ActiveRecord::RecordNotFound
+			redirect_to vehicle_payments_path,notice: "Vehicle Payment Details ur looking for doesnot exits"
+		end
+		
 	end
 
 	def create
@@ -18,13 +24,13 @@ def index
 	end
 
 	def edit
-		@vehicle_payment = VehiclePayment.find(params[:id])
+		@vehicle_payment = VehiclePayment.find_by(vehicle_id: params[:id])
 	end
 
 	def update
 		@vehicle_payment = VehiclePayment.find(params[:id])
 		if @vehicle_payment.update_attributes(vehicle_payment_params)
-			redirect_to vehicle_payments_path,notice:"Successfully updated the Vehicle Payments details"
+			redirect_to vehicles_path,notice:"Successfully updated the Vehicle Payments details"
 		else
 			render action:"edit"
 		end
@@ -36,9 +42,9 @@ def index
 	end
 
 	def destroy
-		@vehicle_payment = VehiclePayment.find(params[:id])
+		@vehicle_payment = VehiclePayment.find_by(vehicle_id: params[:id])
 		@vehicle_payment.destroy
-		redirect_to vehicle_payment_path,notice: "Successfully deleted the vehicle payment details"
+		redirect_to vehicles_path,notice: "Successfully deleted the vehicle payment details"
 		
 	end
 

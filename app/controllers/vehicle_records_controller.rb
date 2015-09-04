@@ -5,7 +5,13 @@ def index
 	end
 
 	def show
-		@vehicle_record = VehicleRecord.find(params[:id])
+		begin
+			@vehicle_record = VehicleRecord.find_by(vehicle_id: params[:id])
+		rescue ActiveRecord::RecordNotFound
+			redirect_to vehicle_record_path,notice: "Vehicle Record ur looking for doesnot exits"
+			
+		end
+		
 	end
 
 	def create
@@ -18,13 +24,13 @@ def index
 	end
 
 	def edit
-		@vehicle_record = VehicleRecord.find(params[:id])
+		@vehicle_record = VehicleRecord.find_by(vehicle_id: params[:id])
 	end
 
 	def update
 		@vehicle_record = VehicleRecord.find(params[:id])
 		if @vehicle_record.update_attributes(vehicle_record_params)
-			redirect_to vehicle_records_path,notice:"Successfully updated the Vehicle Record details"
+			redirect_to vehicles_path,notice:"Successfully updated the Vehicle Record details"
 		else
 			render action:"edit"
 		end
@@ -36,9 +42,9 @@ def index
 	end
 
 	def destroy
-		@vehicle_record = VehicleRecord.find(params[:id])
+		@vehicle_record = VehicleRecord.find_by(vehicle_id: params[:id])
 		@vehicle_record.destroy
-		redirect_to vehicle_record_path,notice: "Successfully deleted the vehicle details"
+		redirect_to vehicles_path,notice: "Successfully deleted the vehicle details"
 		
 	end
 

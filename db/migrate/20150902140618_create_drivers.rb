@@ -4,7 +4,7 @@ class CreateDrivers < ActiveRecord::Migration
     	t.string :name
     	t.integer :age
     	t.string :blood_group
-    	t.integer :mobile_no
+    	t.integer :mobile_no 
     	t.integer :emergency_contact
     	t.string :address
     	t.date :dl_expiration

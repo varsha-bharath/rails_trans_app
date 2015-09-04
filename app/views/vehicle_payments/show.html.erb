@@ -1,0 +1,12 @@
+<%# link_to "Edit",edit_vehicle_payment_path(@vehicle_payment.id) %> |
+<%# link_to "Delete",vehicle_payment_path(@vehicle_payment.id), method: :delete,data:{confirm: "Are you sure"}%>
+<%= link_to "Vehicle Details",vehicles_path %>
+
+<h3>Vehicle Payment details</h3>
+<ul>
+	<li>Payment Type:<%= @vehicle_payment.amount_type %></li>
+	<li>Amount Paid: <%= @vehicle_payment.amount_paid %><br/></li>
+	<li>Payment Date: <%= @vehicle_payment.payment_date %><br/></li>
+	<li>Mode of Payment: <%= @vehicle_payment.mode_of_payment %></li>
+
+</ul>
