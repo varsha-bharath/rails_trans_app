@@ -2,6 +2,9 @@ class VehiclesController < ApplicationController
 
 	def index
 		@vehicles = Vehicle.all
+		@drivers = Driver.all
+		@clients = Client.all
+		@routes = Route.all
 	end
 
 	def new
