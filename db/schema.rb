@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904090226) do
+ActiveRecord::Schema.define(version: 20150904113838) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "name"
@@ -40,9 +40,17 @@ ActiveRecord::Schema.define(version: 20150904090226) do
     t.string   "emergency_contact"
     t.string   "address"
     t.date     "dl_expiration"
-    t.boolean  "back_ground_check", default: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.boolean  "back_ground_check",     default: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "image_p_file_name"
+    t.string   "image_p_content_type"
+    t.integer  "image_p_file_size"
+    t.datetime "image_p_updated_at"
+    t.string   "image_dl_file_name"
+    t.string   "image_dl_content_type"
+    t.integer  "image_dl_file_size"
+    t.datetime "image_dl_updated_at"
   end
 
   create_table "routes", force: :cascade do |t|
