@@ -45,7 +45,7 @@ def index
 	private 
 
 	def vehicle_payment_params
-		params[:vehicle_payment].permit(:amount_type,:amount_paid,:payment_date,:mode_of_payment,:vehicle_id)
+		params[:vehicle_payment].permit(:amount_type,:amount_paid,:payment_date,:mode_of_payment,:vehicle_id, :image)
 	end 
 
 end

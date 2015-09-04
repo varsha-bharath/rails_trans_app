@@ -1,5 +1,9 @@
 class VehiclesController < ApplicationController
 
+before_action :authenticate_user!
+
+#load_and_authorize_resource
+
 	def index
 		@vehicles = Vehicle.all
 	end
@@ -47,7 +51,7 @@ class VehiclesController < ApplicationController
 	end
 
 def vehicle_params
-		params[:vehicle].permit(:name,:vehicle_type,:reg_no,:chassis_no,:engine_no)
+		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no)
 	end 
 end
 

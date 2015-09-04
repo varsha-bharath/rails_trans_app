@@ -8,5 +8,4 @@ class Driver < ActiveRecord::Base
 
 	validates_length_of :mobile_no, :emergency_contact, maximum: 10, minimum: 10
 
-
 end

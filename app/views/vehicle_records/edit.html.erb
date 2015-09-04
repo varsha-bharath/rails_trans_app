@@ -1,7 +1,7 @@
 
 <h3>Edit Vehicles Record</h3>
 
-<%= form_for @vehicle_record do |t| %>
+<%= form_for @vehicle_record, html: { multipart: true } do |t| %>
 	<% if @vehicle_record.errors.any? %>
 		<h3>These errors prohibited this <%= @vehicle_record.class %> from being saved</h3>
 		<ul>
@@ -17,6 +17,9 @@
 
 	<label>Expiration Date</label></br>
 	<%= t.date_select :expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+	
+	<label>Record Image </label><br/>
+	<%= t.file_field :image %><br/>
 	
 	<%= t.submit "Submit"%>
 

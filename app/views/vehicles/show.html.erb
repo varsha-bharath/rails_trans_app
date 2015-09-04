@@ -11,14 +11,14 @@
 </ul>
 <!--
 <h4>Vehicle Record Details </h4>
-	<% for vehicle_record in @vehicle.vehicle_records %> 
+	<%# for vehicle_record in @vehicle.vehicle_records %> 
 <ul>
-	<li>Vehicle Record type: <%= vehicle_record.record_type %><br/></li>
+	<li>Vehicle Record type: <%#= vehicle_record.record_type %><br/></li>
 	
-	<li>Vehicle Expiration Date: <%= vehicle_record.expiration_date %><br/></li>
+	<li>Vehicle Expiration Date: <%#= vehicle_record.expiration_date %><br/></li>
 
 </ul>
-<% end %>
+
 -->
 <h4>Vehicle Record Details </h4>
 <table border="1">
@@ -26,6 +26,7 @@
 		<tr>
 			<th>Vehicle Record type</th>
 			<th>Vehicle Expiration Date</th>
+			<th>Record Image</th>
 			<th>Actions </th>
 			
 		</tr>
@@ -34,7 +35,8 @@
 			<tr>
 				<% for vehicle_record in @vehicle.vehicle_records %>
 					<td><%=  vehicle_record.record_type %></td>
-					<td><%= vehicle_record.expiration_date %></td>	
+					<td><%= vehicle_record.expiration_date %></td>
+					<td><%= image_tag vehicle_record.image.url%></td>
 					<td><%= link_to "Show",vehicle_record_path(vehicle_record.vehicle_id) %> |
 						<%= link_to "Edit",edit_vehicle_record_path(vehicle_record.vehicle_id) %> |
 						<%= link_to "Delete",vehicle_record_path(vehicle_record.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%>
@@ -52,6 +54,7 @@
 	<li>Amount Paid: <%= vehicle_payment.amount_paid %><br/></li>
 	<li>Payment Date: <%= vehicle_payment.payment_date %><br/></li>
 	<li>Mode of Payment: <%= vehicle_payment.mode_of_payment %><br/></li>
+	<li><%= image_tag vehicle_payment.image.url %></li>
 
 </ul>
 <% end %>
@@ -66,7 +69,7 @@
 
 <h3>Add Vehicle Record </h3>
 
-<%= form_for @vehicle_record do |t|%>
+<%= form_for @vehicle_record , html: { multipart: true } do |t|%>
 	<% if @vehicle_record.errors.any? %>
 		<h3>These errors prohibited this <%= @vehicle_record.class %> from being saved</h3>
 		<ul>
@@ -82,6 +85,9 @@
 	<label>Expiration Date</label></br>
 	<%= t.date_select :expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
 	
+	<label>Record Image </label><br/>
+	<%= t.file_field :image %><br/>
+	
 	<%= t.hidden_field :vehicle_id,value: @vehicle.id %>
 <br/>
 	
@@ -92,7 +98,7 @@
 
 <h3>Add Vehicle Payment Details </h3>
 
-<%= form_for @vehicle_payment do |t| %>
+<%= form_for @vehicle_payment, html: { multipart: true } do |t| %>
 	<% if @vehicle_payment.errors.any? %>
 		<h3>These errors prohibited this <%= @vehicle_payment.class %> from being saved</h3>
 		<ul>
@@ -113,8 +119,10 @@
 	
 	<label>Mode of Payment</label><br/>
 	<%= t.select :mode_of_payment,["Cash","Card"],prompt:"select_record"%><br/>
-	<%= t.hidden_field :vehicle_id,value: @vehicle_id %>
-<br/>
+	<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
+
+	<label>Payment Image </label><br/>
+	<%= t.file_field :image %><br/>
 
 	<%= t.submit "Submit"%><br/>
 
@@ -133,4 +141,3 @@
 <h3>Total Vehicle Records <%= @vehicle.vehicle_records.count%></h3>
 -->
 <%= link_to "Back", vehicles_path %>
-
