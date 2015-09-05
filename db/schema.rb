@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903095229) do
+ActiveRecord::Schema.define(version: 20150904113838) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "name"
@@ -114,16 +114,24 @@ ActiveRecord::Schema.define(version: 20150903095229) do
     t.date     "payment_date"
     t.string   "mode_of_payment"
     t.integer  "vehicle_id"
-    
-    
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "vehicle_records", force: :cascade do |t|
     t.string   "record_type"
     t.date     "expiration_date"
     t.integer  "vehicle_id"
-    
-    
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "vehicle_routes", force: :cascade do |t|

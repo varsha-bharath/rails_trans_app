@@ -24,7 +24,6 @@
 
 <hr>
 
-
 <h4>Vehicle Record Details </h4>
 <table border="1">
 	<thead>
@@ -44,24 +43,22 @@
 					<td><%= image_tag vehicle_record.image.url%></td>
 					<td><%= link_to "Show",vehicle_record_path(vehicle_record.vehicle_id) %> |
 						<%= link_to "Edit",edit_vehicle_record_path(vehicle_record.vehicle_id) %> |
-						<%= link_to "Delete",vehicle_record_path(vehicle_record.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%>
-			</td>
-		
+						<%= link_to "Delete",vehicle_record_path(vehicle_record.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+				<% end %>
 			</tr>
 		</tbody>
-<% end %>
 </table>
 <hr>
 <h4>Vehicle Payment Details </h4>
 	<% for vehicle_payment in @vehicle.vehicle_payments %> 
-<ul>
-	<li>Payment type: <%= vehicle_payment.amount_type %><br/></li>
-	<li>Amount Paid: <%= vehicle_payment.amount_paid %><br/></li>
-	<li>Payment Date: <%= vehicle_payment.payment_date %><br/></li>
-	<li>Mode of Payment: <%= vehicle_payment.mode_of_payment %><br/></li>
-	<li><%= image_tag vehicle_payment.image.url %></li>
-
-</ul>
+		<ul>
+			<li>Payment type: <%= vehicle_payment.amount_type %><br/></li>
+			<li>Amount Paid: <%= vehicle_payment.amount_paid %><br/></li>
+			<li>Payment Date: <%= vehicle_payment.payment_date %><br/></li>
+			<li>Mode of Payment: <%= vehicle_payment.mode_of_payment %><br/></li>
+			<li><%= image_tag vehicle_payment.image.url %></li>
+		</ul>
+	<% end %>
 
 <table border="1">
 	<thead>
@@ -83,12 +80,10 @@
 					<td><%= vehicle_payment.mode_of_payment %></td>
 					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
 						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%>
-					</td>
+						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+				<% end %>	
 			</tr>
 		</tbody>
-
-<% end %>
 </table>
 
 <hr>
@@ -110,12 +105,10 @@
 					<td><%= accessory.cost %></td>	
 					<td><%= link_to "Show",accessory_path(accessory.vehicle_id) %> |
 						<%= link_to "Edit",edit_accessory_path(accessory.vehicle_id) %> |
-						<%= link_to "Delete",accessory_path(accessory.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%>
-			</td>
-		
+						<%= link_to "Delete",accessory_path(accessory.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+				<% end %>
 			</tr>
 		</tbody>
-<% end %>
 </table>
 <hr>
 <h3>Add Vehicle Record </h3>

@@ -53,8 +53,8 @@ before_action :authenticate_user!
 		
 	end
 
-def vehicle_params
+	def vehicle_params
 		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no)
 	end 
-end
 
+end

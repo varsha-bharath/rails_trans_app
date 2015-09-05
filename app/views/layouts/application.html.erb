@@ -13,7 +13,12 @@
     welcome <%= current_user.email %> ||
     <%= link_to "Sign Out" , destroy_user_session_path, method: :delete %> ||
     <%= link_to "Account Settings" , edit_user_registration_path %> ||
-  <% end %>
+  <% end %> </br>
+  
+  <%= link_to "Add New Vehicle", new_vehicle_path %>||<%= link_to "Add New Driver" , new_driver_path %>|| 
+  <%= link_to "Add New Client " , new_client_path %>||<%= link_to "Add New Route " , new_route_path %>||
+  <%= link_to "Add New Vehicle Record", new_vehicle_record_path %>||<%= link_to "Add New Vehicle Payment", new_vehicle_payment_path %>||
+  
   
   
   <p class="notice"><%= notice %></p>
