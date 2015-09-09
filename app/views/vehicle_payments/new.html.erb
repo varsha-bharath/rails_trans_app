@@ -11,9 +11,12 @@
 			<% end -%>
 		</ul>
 	<% end -%>
+
+	<label>Vehicle:</label><br/>
+	<%= t.collection_select :vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/>
 	
 	<label>Payment Type </label><br/>
-	<%= t.select :amount_type,["Down-payment","EMI","Fuel","Driver salary","Service"],prompt:"select_record"%><br/>
+	<%= t.select :amount_type,["Down-payment","EMI","Fuel","Driver-salary","Service"],prompt:"select_record"%><br/>
 
 	<label>Amount Paid </label><br/>
 	<%= t.text_field :amount_paid %><br/>
@@ -24,7 +27,7 @@
 	<label>Mode of Payment</label><br/>
 	<%= t.select :mode_of_payment,["Cash","Card"],prompt:"select_record"%><br/>
 
-	<%= t.hidden_field :vehicle_id,:value => params[:vehicle_id] %><br/>
+	<%#= t.hidden_field :vehicle_id,:value => params[:vehicle_id] %><br/>
 
 	<label>Payment Image </label><br/>
 	<%= t.file_field :image %><br/>

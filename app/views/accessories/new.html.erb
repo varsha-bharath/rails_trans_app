@@ -12,7 +12,7 @@
 	<% end -%>
 
 	<label>Vehicle:</label><br/>
-	<%= t.collection_select:vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/>
+	<%= t.collection_select :vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/>
 
 	<label>Name of Accessory</label><br/>
 	<%= t.text_field :name %><br/>
@@ -23,7 +23,7 @@
 	<label>Model</label></br>
 	<%= t.text_field :model %><br/><br/>
 
-	<%= t.hidden_field :vehicle_id,:value => params[:vehicle_id] %>
+	<%#= t.hidden_field :vehicle_id,:value => params[:vehicle_id] %>
 <br/>
 
 	<%= t.submit "Submit"%><br/>

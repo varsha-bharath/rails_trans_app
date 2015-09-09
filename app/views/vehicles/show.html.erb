@@ -45,20 +45,20 @@
 		</tr>
 	</thead>
 		<tbody>
-			<tr>
-				<% for vehicle_record in @vehicle.vehicle_records %>
+			<% for vehicle_record in @vehicle.vehicle_records %>
+				<tr>					
 					<td><%=  vehicle_record.record_type %></td>
 					<td><%= vehicle_record.expiration_date %></td>
 					<td><%= image_tag vehicle_record.image.url%></td>
 					<td><%= link_to "Show",vehicle_record_path(vehicle_record.vehicle_id) %> |
 						<%= link_to "Edit",edit_vehicle_record_path(vehicle_record.vehicle_id) %> |
 						<%= link_to "Delete",vehicle_record_path(vehicle_record.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+				</tr>
 				<% end %>
-			</tr>
-		</tbody>
+			</tbody>
 </table>
 <hr>
-<h4>Vehicle Payment Details </h4>
+<h4>Vehicle Payment Details of EMI</h4>
 	
 <table border="1">
 	<thead>
@@ -68,12 +68,11 @@
 			<th>Payment Date</th>
 			<th>Mode of Payment</th>
 			<th>Actions </th>
-			
 		</tr>
 	</thead>
 		<tbody>
-			<tr>
-				<% for vehicle_payment in @vehicle.vehicle_payments %> 
+					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","EMI") %> 
+					<tr>
 					<td> <%= vehicle_payment.amount_type %></td>
 					<td><%= vehicle_payment.amount_paid %></td>	
 					<td><%= vehicle_payment.payment_date %></td>
@@ -81,8 +80,116 @@
 					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
 						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
 						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+						</tr>
 				<% end %>	
-			</tr>
+		</tbody>
+</table>
+
+<h4>Vehicle Payment Details of Down-Payment </h4>
+	
+<table border="1">
+	<thead>
+		<tr>
+			<th>Payment Type</th>
+			<th>Amount Paid</th>
+			<th>Payment Date</th>
+			<th>Mode of Payment</th>
+			<th>Actions </th>
+		</tr>
+	</thead>
+		<tbody>
+					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Down-payment") %> 
+					<tr>
+					<td> <%= vehicle_payment.amount_type %></td>
+					<td><%= vehicle_payment.amount_paid %></td>	
+					<td><%= vehicle_payment.payment_date %></td>
+					<td><%= vehicle_payment.mode_of_payment %></td>
+					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+						</tr>
+				<% end %>	
+		</tbody>
+</table>
+
+<h4>Vehicle Payment Details of Fuel </h4>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>Payment Type</th>
+			<th>Amount Paid</th>
+			<th>Payment Date</th>
+			<th>Mode of Payment</th>
+			<th>Actions </th>
+		</tr>
+	</thead>
+		<tbody>
+					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Fuel") %> 
+					<tr>
+					<td> <%= vehicle_payment.amount_type %></td>
+					<td><%= vehicle_payment.amount_paid %></td>	
+					<td><%= vehicle_payment.payment_date %></td>
+					<td><%= vehicle_payment.mode_of_payment %></td>
+					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+						</tr>
+				<% end %>	
+		</tbody>
+</table>
+
+<h4>Vehicle Payment Details of Driver Salary </h4>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>Payment Type</th>
+			<th>Amount Paid</th>
+			<th>Payment Date</th>
+			<th>Mode of Payment</th>
+			<th>Actions </th>
+		</tr>
+	</thead>
+		<tbody>
+					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Driver-salary") %> 
+					<tr>
+					<td> <%= vehicle_payment.amount_type %></td>
+					<td><%= vehicle_payment.amount_paid %></td>	
+					<td><%= vehicle_payment.payment_date %></td>
+					<td><%= vehicle_payment.mode_of_payment %></td>
+					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+						</tr>
+				<% end %>	
+		</tbody>
+</table>
+
+<h4>Vehicle Payment Details of Servies </h4>
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>Payment Type</th>
+			<th>Amount Paid</th>
+			<th>Payment Date</th>
+			<th>Mode of Payment</th>
+			<th>Actions </th>
+		</tr>
+	</thead>
+		<tbody>
+					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Service") %> 
+					<tr>
+					<td> <%= vehicle_payment.amount_type %></td>
+					<td><%= vehicle_payment.amount_paid %></td>	
+					<td><%= vehicle_payment.payment_date %></td>
+					<td><%= vehicle_payment.mode_of_payment %></td>
+					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+						</tr>
+				<% end %>	
 		</tbody>
 </table>
 
@@ -99,15 +206,15 @@
 		</tr>
 	</thead>
 		<tbody>
-			<tr>
-				<% for accessory in @vehicle.accessories %> 
+			<% for accessory in @vehicle.accessories %> 
+				<tr>
 					<td><%= accessory.name %></td>
-					<td><%= accessory.cost %></td>	
+					<td><%= accessory.cost %></td>
 					<td><%= link_to "Show",accessory_path(accessory.vehicle_id) %> |
 						<%= link_to "Edit",edit_accessory_path(accessory.vehicle_id) %> |
 						<%= link_to "Delete",accessory_path(accessory.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+				</tr>
 				<% end %>
-			</tr>
 		</tbody>
 </table>
 <hr>

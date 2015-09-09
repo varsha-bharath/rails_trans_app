@@ -12,7 +12,7 @@
 	<% end -%>
 
 	<label>Vehicle:</label><br/>
-	<%= t.collection_select:vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/>
+	<%= t.collection_select :vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/>
 
 	<label>Record Type </label><br/>
 	<%= t.select :record_type,["RC","Emission","Insurance"],prompt:"select_record"%><br/>
@@ -20,7 +20,7 @@
 	<label>Expiration Date</label></br>
 	<%= t.date_select :expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
 
-	<%= t.hidden_field :vehicle_id,:value => params[:vehicle_id] %>
+	<%#= t.hidden_field :vehicle_id,:value => params[:vehicle_id] %>
 <br/>
 	
 	<%= t.submit %><br/>
