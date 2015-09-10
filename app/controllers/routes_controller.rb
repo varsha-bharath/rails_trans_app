@@ -10,6 +10,7 @@ class RoutesController < ApplicationController
 
 	def create
 		@route = Route.new(route_params)
+		Notice.add_route(@route,current_user).deliver!
 		if @route.save
 			redirect_to routes_path, notice: "Successfully Route created"
 		else

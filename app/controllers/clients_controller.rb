@@ -12,6 +12,7 @@ class ClientsController < ApplicationController
   
   def create
   	@client = Client.new(client_params)
+     Alert.add_client(@client,current_user).deliver!
   	if @client.save
   		redirect_to clients_path, notice: "Successfully created a new Client"
   	else

@@ -11,6 +11,7 @@ class DriversController < ApplicationController
 
 	def create
 		@driver = Driver.new(driver_params)
+		Notification.add_driver(@driver,current_user).deliver!
 		if @driver.save
 			redirect_to drivers_path, notice: "Successfully created a new Driver"
 		else
