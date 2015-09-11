@@ -1,8 +1,8 @@
 <h3>Listing Vehicles </h3>
 
-<table border="1">
-
-	<thead>
+ <div class="table-responsive">          
+  <table class="table" border="1">
+  	<thead>
 		<tr>
 			<th>VehicleName</th>
 			<th>RegistrationNumber</th>
@@ -24,14 +24,15 @@
 		</tbody>
 <% end %>
 </table>
+</div>
 <br/>
 
 <%= link_to "Add New Vehicle", new_vehicle_path %><br/><br/>
 
 <h3>Listing Drivers</h3><br/>
-
-<table border="1">
-	<thead>
+<div class="table-responsive">          
+  <table class="table" border="1">
+ 	<thead>
 		<tr>
 			<th>#</th>
 			<th>Name</th>
@@ -69,14 +70,15 @@
     </tbody>
 
 	</table><br/>
+</div>
 <%= link_to "Add New Driver" , new_driver_path %><br/><br/>
 
 <h3>Listing Clients</h3>
 
 <br/>
-
-<table border "1">
-	<thead>
+<div class="table-responsive">          
+  <table class="table" border="1">
+ 	<thead>
            <tr>
            	   <th> </th>
            	   <th>Name</th>
@@ -102,16 +104,18 @@
           	    	        <%= link_to "Delete", client_path(client.id), method: :delete, data: {confirm: "Are you sure?"} %></td>  
                    </tr>
       	   <% end %>
-      </tody>
+      </tbody>
 </table><br/>
+</div>
+
 <%= link_to "Add New Client " , new_client_path %><br/><br/>
 
 <h3>Listing Routes</h3>
 
 <br/>
-
-<table border "1">
-  <thead>
+<div class="table-responsive">          
+  <table class="table" border="1">
+   <thead>
 	  <tr> 
             <th>   </th>
             <th>Name</th>
@@ -138,7 +142,10 @@
   </tbody>
 
 </table><br/>
-<%= link_to "Add New Route " , new_route_path %><br/><br/>
+
+</div>
+<button type="button" class="btn btn-link"><%= link_to "Add New Route " , new_route_path %></button>
+<%# link_to "Add New Route " , new_route_path %><br/><br/>
 
 
 

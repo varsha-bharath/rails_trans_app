@@ -1,5 +1,6 @@
 <h3>Vehicle details</h3>
-<table border="1">
+  <div class="table-responsive">          
+  <table class="table" border="1">
 	<thead>
 		<tr>
 			<th>Name:</th>
@@ -19,11 +20,12 @@
 			</tr>
 		</tbody>	
 </table>
-
+</div>
 <hr>
 
 <h4>Vehicle Record Details </h4>
-<table border="1">
+  <div class="table-responsive">          
+  <table class="table" border="1">
 	<thead>
 		<tr>
 			<th>Vehicle Record type</th>
@@ -45,10 +47,11 @@
 				<% end %>
 			</tbody>
 </table>
+</div>
 <hr>
 <h4>Vehicle Payment Details of EMI</h4>
-	
-<table border="1">
+  <div class="table-responsive">          
+  <table class="table" border="1">
 	<thead>
 		<tr>
 			<th>Payment Type</th>
@@ -72,10 +75,10 @@
 				<% end %>	
 		</tbody>
 </table>
-
+</div>
 <h4>Vehicle Payment Details of Down-Payment </h4>
-	
-<table border="1">
+  <div class="table-responsive">          
+  <table class="table" border="1">
 	<thead>
 		<tr>
 			<th>Payment Type</th>
@@ -99,10 +102,10 @@
 				<% end %>	
 		</tbody>
 </table>
-
+</div>
 <h4>Vehicle Payment Details of Fuel </h4>
-
-<table border="1">
+  <div class="table-responsive">          
+  <table class="table" border="1">
 	<thead>
 		<tr>
 			<th>Payment Type</th>
@@ -126,12 +129,12 @@
 				<% end %>	
 		</tbody>
 </table>
-
+</div>
 <h3>Total VehiclePayments of Fuel <%= @vehicle.vehicle_payments.where("amount_type = ?","Fuel").sum :amount_paid %></h3>
 
 <h4>Vehicle Payment Details of Driver Salary </h4>
-
-<table border="1">
+  <div class="table-responsive">          
+  <table class="table" border="1">
 	<thead>
 		<tr>
 			<th>Payment Type</th>
@@ -155,10 +158,10 @@
 				<% end %>	
 		</tbody>
 </table>
-
+</div>
 <h4>Vehicle Payment Details of Servies </h4>
-
-<table border="1">
+  <div class="table-responsive">          
+  <table class="table" border="1">
 	<thead>
 		<tr>
 			<th>Payment Type</th>
@@ -182,7 +185,7 @@
 				<% end %>	
 		</tbody>
 </table>
-
+</div>
 <hr>
 
 <%#= pie_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
@@ -190,11 +193,12 @@
 
 
 <h4>Accessories Details</h4>
-<table border="1">
+  <div class="table-responsive">          
+  <table class="table" border="1">
 	<thead>
 		<tr>
 			<th>Name Of Accessory</th>
-			<th>Cost:</th>
+			<th>Cost</th>
 			<th>Actions </th>
 			
 		</tr>
@@ -211,6 +215,7 @@
 				<% end %>
 		</tbody>
 </table>
+</div>
 <hr>
 <h3>Add Vehicle Record </h3>
 
@@ -235,11 +240,10 @@
 	<label>Record Image </label><br/>
 	<%= t.file_field :image %><br/>
 	
-	<%= t.hidden_field :vehicle_id,value: @vehicle.id %>
-<br/>
+	<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
 	
-	<%= t.submit %><br/>
-
+	<input type="submit" class="btn btn-info" value="Create Vehicle Record">
+	
 <% end -%>
 
 <hr>
@@ -274,7 +278,8 @@
 	<label>Payment Image </label><br/>
 	<%= t.file_field :image %><br/>
 
-	<%= t.submit %><br/>
+	<input type="submit" class="btn btn-info" value="Create Vehicle Payment">
+	
 
 <% end -%>
 <hr>
@@ -291,12 +296,12 @@
 	<label>Model</label></br>
 	<%= t.text_field :model %><br/><br/>
 
-	<%= t.hidden_field :vehicle_id,value: @vehicle.id %>
-<br/>
+	<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
 
-	<%= t.submit %><br/>
-
+	<input type="submit" class="btn btn-info" value="Create Accesory">
+	
 <% end -%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

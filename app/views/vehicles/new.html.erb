@@ -11,26 +11,22 @@
 	<% end -%>
 
 	
-	<label>Name: </label></br>
+	<label>Name: </label><br/>
 	<%= t.text_field :name %><br/>
 
 	<label>Vehicle Type </label><br/>
-	<%= t.select :vehicle_type,["Sedan","Suv","Minivan"],prompt:"select_vehicle"%><br/>
+	<%= t.select :vehicle_type,["Sedan","Suv","Minivan"],prompt:"select_vehicle"%><br/><br/>
 
-	<label>Registration Number</label></br>
+	<label>Registration Number</label><br/>
 	<%= t.text_field :reg_no %><br/>
 
-	<label>Chassis Number: </label></br>
+	<label>Chassis Number: </label><br/>
 	<%= t.text_field :chassis_no %><br/>
 
-	<label>Engine Number: </label></br>
-	<%= t.text_field :engine_no %><br/>
+	<label>Engine Number: </label><br/>
+	<%= t.text_field :engine_no %><br/><br/>
 
-	<%= t.submit "Submit"%>
-
+	<input type="submit" class="btn btn-info" value="Create Vehicle">
+	
 <% end -%>
-
-<!--
-<%= link_to "New vehicle",new_vehicle_path %>
--->
 

@@ -13,7 +13,7 @@
 	<% end -%>
 
 	<label>Vehicle:</label><br/>
-	<%= t.collection_select :vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/>
+	<%= t.collection_select :vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/><br/>
 	
 	<label>Payment Type </label><br/>
 	<%= t.select :amount_type,["Down-payment","EMI","Fuel","Driver-salary","Service"],prompt:"select_record"%><br/>
@@ -22,18 +22,15 @@
 	<%= t.text_field :amount_paid %><br/>
 
 	<label>Payment Date</label></br>
-	<%= t.date_select :payment_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+	<%= t.date_select :payment_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/><br/>
 	
 	<label>Mode of Payment</label><br/>
-	<%= t.select :mode_of_payment,["Cash","Card"],prompt:"select_record"%><br/>
-
-	<%#= t.hidden_field :vehicle_id,:value => params[:vehicle_id] %><br/>
+	<%= t.select :mode_of_payment,["Cash","Card"],prompt:"select_record"%><br/><br/>
 
 	<label>Payment Image </label><br/>
 	<%= t.file_field :image %><br/>
 
-
-	<%= t.submit "Submit"%><br/>
-
+	<input type="submit" class="btn btn-info" value="Create Vehicle Payment">
+	
 <% end -%>
 
