@@ -23,308 +23,378 @@
 </div>
 <hr>
 
-<h4>Vehicle Record Details </h4>
-  <div class="table-responsive">          
-  <table class="table" border="1">
-	<thead>
-		<tr>
-			<th>Vehicle Record type</th>
-			<th>Vehicle Expiration Date</th>
-			<th>Record Image</th>
-			<th>Actions </th>
-		</tr>
-	</thead>
-		<tbody>
-			<% for vehicle_record in @vehicle.vehicle_records %>
-				<tr>					
-					<td><%=  vehicle_record.record_type %></td>
-					<td><%= vehicle_record.expiration_date %></td>
-					<td><%= image_tag vehicle_record.image.url%></td>
-					<td><%= link_to "Show",vehicle_record_path(vehicle_record.vehicle_id) %> |
-						<%= link_to "Edit",edit_vehicle_record_path(vehicle_record.vehicle_id) %> |
-						<%= link_to "Delete",vehicle_record_path(vehicle_record.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
-				</tr>
-				<% end %>
-			</tbody>
-</table>
-</div>
-<hr>
-<h4>Vehicle Payment Details of EMI</h4>
-  <div class="table-responsive">          
-  <table class="table" border="1">
-	<thead>
-		<tr>
-			<th>Payment Type</th>
-			<th>Amount Paid</th>
-			<th>Payment Date</th>
-			<th>Mode of Payment</th>
-			<th>Actions </th>
-		</tr>
-	</thead>
-		<tbody>
-					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","EMI") %> 
-					<tr>
-					<td> <%= vehicle_payment.amount_type %></td>
-					<td><%= vehicle_payment.amount_paid %></td>	
-					<td><%= vehicle_payment.payment_date %></td>
-					<td><%= vehicle_payment.mode_of_payment %></td>
-					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
-						</tr>
-				<% end %>	
-		</tbody>
-</table>
-</div>
-<h4>Vehicle Payment Details of Down-Payment </h4>
-  <div class="table-responsive">          
-  <table class="table" border="1">
-	<thead>
-		<tr>
-			<th>Payment Type</th>
-			<th>Amount Paid</th>
-			<th>Payment Date</th>
-			<th>Mode of Payment</th>
-			<th>Actions </th>
-		</tr>
-	</thead>
-		<tbody>
-					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Down-payment") %> 
-					<tr>
-					<td> <%= vehicle_payment.amount_type %></td>
-					<td><%= vehicle_payment.amount_paid %></td>	
-					<td><%= vehicle_payment.payment_date %></td>
-					<td><%= vehicle_payment.mode_of_payment %></td>
-					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
-						</tr>
-				<% end %>	
-		</tbody>
-</table>
-</div>
-<h4>Vehicle Payment Details of Fuel </h4>
-  <div class="table-responsive">          
-  <table class="table" border="1">
-	<thead>
-		<tr>
-			<th>Payment Type</th>
-			<th>Amount Paid</th>
-			<th>Payment Date</th>
-			<th>Mode of Payment</th>
-			<th>Actions </th>
-		</tr>
-	</thead>
-		<tbody>
-					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Fuel") %> 
-					<tr>
-					<td> <%= vehicle_payment.amount_type %></td>
-					<td><%= vehicle_payment.amount_paid %></td>	
-					<td><%= vehicle_payment.payment_date %></td>
-					<td><%= vehicle_payment.mode_of_payment %></td>
-					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
-						</tr>
-				<% end %>	
-		</tbody>
-</table>
-</div>
-<h3>Total VehiclePayments of Fuel <%= @vehicle.vehicle_payments.where("amount_type = ?","Fuel").sum :amount_paid %></h3>
-
-<h4>Vehicle Payment Details of Driver Salary </h4>
-  <div class="table-responsive">          
-  <table class="table" border="1">
-	<thead>
-		<tr>
-			<th>Payment Type</th>
-			<th>Amount Paid</th>
-			<th>Payment Date</th>
-			<th>Mode of Payment</th>
-			<th>Actions </th>
-		</tr>
-	</thead>
-		<tbody>
-					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Driver-salary") %> 
-					<tr>
-					<td> <%= vehicle_payment.amount_type %></td>
-					<td><%= vehicle_payment.amount_paid %></td>	
-					<td><%= vehicle_payment.payment_date %></td>
-					<td><%= vehicle_payment.mode_of_payment %></td>
-					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
-						</tr>
-				<% end %>	
-		</tbody>
-</table>
-</div>
-<h4>Vehicle Payment Details of Servies </h4>
-  <div class="table-responsive">          
-  <table class="table" border="1">
-	<thead>
-		<tr>
-			<th>Payment Type</th>
-			<th>Amount Paid</th>
-			<th>Payment Date</th>
-			<th>Mode of Payment</th>
-			<th>Actions </th>
-		</tr>
-	</thead>
-		<tbody>
-					<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Service") %> 
-					<tr>
-					<td> <%= vehicle_payment.amount_type %></td>
-					<td><%= vehicle_payment.amount_paid %></td>	
-					<td><%= vehicle_payment.payment_date %></td>
-					<td><%= vehicle_payment.mode_of_payment %></td>
-					<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
-						<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
-						</tr>
-				<% end %>	
-		</tbody>
-</table>
-</div>
-<hr>
-
-<%#= pie_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
-<%= column_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
-
-
-<h4>Accessories Details</h4>
-  <div class="table-responsive">          
-  <table class="table" border="1">
-	<thead>
-		<tr>
-			<th>Name Of Accessory</th>
-			<th>Cost</th>
-			<th>Actions </th>
-			
-		</tr>
-	</thead>
-		<tbody>
-			<% for accessory in @vehicle.accessories %> 
-				<tr>
-					<td><%= accessory.name %></td>
-					<td><%= accessory.cost %></td>
-					<td><%= link_to "Show",accessory_path(accessory.vehicle_id) %> |
-						<%= link_to "Edit",edit_accessory_path(accessory.vehicle_id) %> |
-						<%= link_to "Delete",accessory_path(accessory.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
-				</tr>
-				<% end %>
-		</tbody>
-</table>
-</div>
-<hr>
-<h3>Add Vehicle Record </h3>
-
-
-<%= form_for @vehicle_record , html: { multipart: true } do |t|%>
-
-	<% if @vehicle_record.errors.any? %>
-		<h3>These errors prohibited this <%= @vehicle_record.class %> from being saved</h3>
-		<ul>
-		<% for msg in @vehicle_record.errors.full_messages %>
-			<li><%= msg %></li>
-			<% end -%>
-		</ul>
-	<% end -%>
-
-	<label>Record Type </label><br/>
-	<%= t.select :record_type,["RC","Emission","Insurance"],prompt:"select_record"%><br/><br/>
-
-	<label>Expiration Date</label><br/>
-	<%= t.date_select :expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
-	
-	<label>Record Image </label><br/>
-	<%= t.file_field :image %><br/>
-	
-	<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
-	
-	<input type="submit" class="btn btn-info" value="Create Vehicle Record">
-	
-<% end -%>
-
-<hr>
-<h3>Add Vehicle Payment Details </h3>
-
-
-<%= form_for @vehicle_payment, html: { multipart: true } do |t| %>
-
-	<% if @vehicle_payment.errors.any? %>
-		<h3>These errors prohibited this <%= @vehicle_payment.class %> from being saved</h3>
-		<ul>
-		<% for msg in @vehicle_payment.errors.full_messages %>
-			<li><%= msg %></li>
-			<% end -%>
-		</ul>
-	<% end -%>
-	
-	<label>Payment Type </label><br/>
-	<%= t.select :amount_type,["Down-payment","EMI","Fuel","Driver salary","Service"],prompt:"select_record"%><br/>
-
-	<label>Amount Paid </label><br/>
-	<%= t.text_field :amount_paid %><br/>
-
-	<label>Payment Date</label></br>
-	<%= t.date_select :payment_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
-	
-	<label>Mode of Payment</label><br/>
-
-	<%= t.select :mode_of_payment,["Cash","Card"],prompt:"select_record"%><br/>
-	<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
-
-	<label>Payment Image </label><br/>
-	<%= t.file_field :image %><br/>
-
-	<input type="submit" class="btn btn-info" value="Create Vehicle Payment">
-	
-
-<% end -%>
-<hr>
-<h3>Add Accessory </h3>
-
-<%= form_for Accessory.new do |t| %>
-	
-	<label>Name of Accessory</label><br/>
-	<%= t.text_field :name %><br/>
-
-	<label>Cost </label><br/>
-	<%= t.text_field :cost %><br/>
-
-	<label>Model</label></br>
-	<%= t.text_field :model %><br/><br/>
-
-	<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
-
-	<input type="submit" class="btn btn-info" value="Create Accesory">
-	
-<% end -%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Case</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+</style>
 </head>
 <body>
+<div class="bs-example">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Accessories Details</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                   <div class="table-responsive">          
+					  <table class="table" border="1">
+						<thead>
+							<tr>
+								<th>Name Of Accessory</th>
+								<th>Cost</th>
+								<th>Actions </th>
+								
+							</tr>
+						</thead>
+							<tbody>
+								<% for accessory in @vehicle.accessories %> 
+									<tr>
+										<td><%= accessory.name %></td>
+										<td><%= accessory.cost %></td>
+										<td><%= link_to "Show",accessory_path(accessory.vehicle_id) %> |
+											<%= link_to "Edit",edit_accessory_path(accessory.vehicle_id) %> |
+											<%= link_to "Delete",accessory_path(accessory.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+									</tr>
+									<% end %>
+							</tbody>
+					</table>
+			</div></div>
+        </div>
+    </div>
 
-<div class="container">
-  <h3>Vehicle Show</h3>
-  <ul class="nav nav-pills nav-justified">
-    <li><%= link_to "Add New Vehicle", new_vehicle_path %></li>
-    <li><%= link_to "Add New Driver" , new_driver_path %></li>
-    <li><%= link_to "Add New Client " , new_client_path %></li>
-    <li><%= link_to "Add New Vehicle Record", new_vehicle_record_path %></li>
-    <li><%= link_to "Add New Vehicle Payment", new_vehicle_payment_path %></li>
-    <li><%= link_to "Add Accessory ",new_accessory_path %></li>
-  </ul>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Vehicle Record Details </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                      <div class="table-responsive">          
+						  <table class="table" border="1">
+							<thead>
+								<tr>
+									<th>Vehicle Record type</th>
+									<th>Vehicle Expiration Date</th>
+									<th>Record Image</th>
+									<th>Actions </th>
+								</tr>
+							</thead>
+								<tbody>
+									<% for vehicle_record in @vehicle.vehicle_records %>
+										<tr>					
+											<td><%=  vehicle_record.record_type %></td>
+											<td><%= vehicle_record.expiration_date %></td>
+											<td><%= image_tag vehicle_record.image.url%></td>
+											<td><%= link_to "Show",vehicle_record_path(vehicle_record.vehicle_id) %> |
+												<%= link_to "Edit",edit_vehicle_record_path(vehicle_record.vehicle_id) %> |
+												<%= link_to "Delete",vehicle_record_path(vehicle_record.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+										</tr>
+										<% end %>
+									</tbody>
+						</table>
+				</div>
+             </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Vehicle Payment Details of EMI</a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="table-responsive">          
+					  <table class="table" border="1">
+						<thead>
+							<tr>
+								<th>Payment Type</th>
+								<th>Amount Paid</th>
+								<th>Payment Date</th>
+								<th>Mode of Payment</th>
+								<th>Actions </th>
+							</tr>
+						</thead>
+							<tbody>
+								<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","EMI") %> 
+								<tr>
+									<td> <%= vehicle_payment.amount_type %></td>
+									<td><%= vehicle_payment.amount_paid %></td>	
+									<td><%= vehicle_payment.payment_date %></td>
+									<td><%= vehicle_payment.mode_of_payment %></td>
+									<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+											<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+											<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+								</tr>
+								<% end %>	
+							</tbody>
+					</table>
+</div></div></div></div>
+<div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Vehicle Payment Details of Down-Payment</a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="table-responsive">          
+					  <table class="table" border="1">
+						<thead>
+							<tr>
+								<th>Payment Type</th>
+								<th>Amount Paid</th>
+								<th>Payment Date</th>
+								<th>Mode of Payment</th>
+								<th>Actions </th>
+							</tr>
+						</thead>
+							<tbody>
+									<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Down-Payment") %> 
+									<tr>
+									<td> <%= vehicle_payment.amount_type %></td>
+									<td><%= vehicle_payment.amount_paid %></td>	
+									<td><%= vehicle_payment.payment_date %></td>
+									<td><%= vehicle_payment.mode_of_payment %></td>
+									<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+										<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+										<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+									</tr>
+									<% end %>	
+							</tbody>
+					</table>
+	</div></div></div></div>
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Vehicle Payment Details of Fuel</a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="table-responsive">          
+					  <table class="table" border="1">
+						<thead>
+							<tr>
+								<th>Payment Type</th>
+								<th>Amount Paid</th>
+								<th>Payment Date</th>
+								<th>Mode of Payment</th>
+								<th>Actions </th>
+							</tr>
+						</thead>
+							<tbody>
+							<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Fuel") %> 
+							<tr>
+								<td> <%= vehicle_payment.amount_type %></td>
+								<td><%= vehicle_payment.amount_paid %></td>	
+								<td><%= vehicle_payment.payment_date %></td>
+								<td><%= vehicle_payment.mode_of_payment %></td>
+								<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+									<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+									<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+							</tr>
+							<% end %>	
+						</tbody>
+					</table>
+					<h3>Total VehiclePayments of Fuel <%= @vehicle.vehicle_payments.where("amount_type = ?","Fuel").sum :amount_paid %></h3>
+
+	</div></div></div></div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Vehicle Payment Details of DriverSalary</a>
+        </h4>
+    </div>
+    <div id="collapseSix" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="table-responsive">          
+			  <table class="table" border="1">
+				<thead>
+					<tr>
+						<th>Payment Type</th>
+						<th>Amount Paid</th>
+						<th>Payment Date</th>
+						<th>Mode of Payment</th>
+						<th>Actions </th>
+					</tr>
+				</thead>
+					<tbody>
+						<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Driver-salary") %> 
+						<tr>
+							<td> <%= vehicle_payment.amount_type %></td>
+							<td><%= vehicle_payment.amount_paid %></td>	
+							<td><%= vehicle_payment.payment_date %></td>
+							<td><%= vehicle_payment.mode_of_payment %></td>
+							<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+								<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+								<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+						</tr>
+						<% end %>	
+					</tbody>
+			</table>
+	</div></div></div></div>
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Vehicle Payment Details of Service</a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="table-responsive">          
+					  <table class="table" border="1">
+						<thead>
+							<tr>
+								<th>Payment Type</th>
+								<th>Amount Paid</th>
+								<th>Payment Date</th>
+								<th>Mode of Payment</th>
+								<th>Actions </th>
+							</tr>
+						</thead>
+							<tbody>
+								<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Service") %> 
+								<tr>
+								<td> <%= vehicle_payment.amount_type %></td>
+								<td><%= vehicle_payment.amount_paid %></td>	
+								<td><%= vehicle_payment.payment_date %></td>
+								<td><%= vehicle_payment.mode_of_payment %></td>
+								<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+									<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.vehicle_id) %> |
+									<%= link_to "Delete",vehicle_payment_path(vehicle_payment.vehicle_id), method: :delete,data:{confirm: "Are you sure"}%></td>
+								</tr>
+								<% end %>	
+							</tbody>
+					</table>
+					</div></div></div></div>
+
+     <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">Add Accessory </a>
+                </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse">
+                <div class="panel-body">
+				
+					<%= form_for Accessory.new do |t| %>
+		
+					<label>Name of Accessory</label><br/>
+					<%= t.text_field :name %><br/>
+
+					<label>Cost </label><br/>
+					<%= t.text_field :cost %><br/>
+
+					<label>Model</label></br>
+					<%= t.text_field :model %><br/><br/>
+
+					<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
+
+					<input type="submit" class="btn btn-info" value="Create Accesory">
+	
+					<% end -%>                    
+                </div>
+            </div>
+    </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseNine">Add Vehicle Payment Details</a>
+                </h4>
+            </div>
+            <div id="collapseNine" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <%= form_for @vehicle_payment, html: { multipart: true } do |t| %>
+
+					<% if @vehicle_payment.errors.any? %>
+						<h3>These errors prohibited this <%= @vehicle_payment.class %> from being saved</h3>
+						<ul>
+						<% for msg in @vehicle_payment.errors.full_messages %>
+							<li><%= msg %></li>
+							<% end -%>
+						</ul>
+					<% end -%>
+					
+					<label>Payment Type </label><br/>
+					<%= t.select :amount_type,["Down-payment","EMI","Fuel","Driver salary","Service"],prompt:"select_record"%><br/>
+
+					<label>Amount Paid </label><br/>
+					<%= t.text_field :amount_paid %><br/>
+
+					<label>Payment Date</label></br>
+					<%= t.date_select :payment_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+					
+					<label>Mode of Payment</label><br/>
+
+					<%= t.select :mode_of_payment,["Cash","Card"],prompt:"select_record"%><br/>
+					<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
+
+					<label>Payment Image </label><br/>
+					<%= t.file_field :image %><br/>
+
+					<input type="submit" class="btn btn-info" value="Create Vehicle Payment">
+
+				<% end -%>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">Add Vehicle Record </a>
+                </h4>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse">
+                <div class="panel-body">
+                   
+				<%= form_for @vehicle_record , html: { multipart: true } do |t|%>
+
+					<% if @vehicle_record.errors.any? %>
+						<h3>These errors prohibited this <%= @vehicle_record.class %> from being saved</h3>
+						<ul>
+						<% for msg in @vehicle_record.errors.full_messages %>
+							<li><%= msg %></li>
+							<% end -%>
+						</ul>
+					<% end -%>
+
+					<label>Record Type </label><br/>
+					<%= t.select :record_type,["RC","Emission","Insurance"],prompt:"select_record"%><br/><br/>
+
+					<label>Expiration Date</label><br/>
+					<%= t.date_select :expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+					
+					<label>Record Image </label><br/>
+					<%= t.file_field :image %><br/>
+					
+					<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
+					
+					<input type="submit" class="btn btn-info" value="Create Vehicle Record">
+					
+				<% end -%>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
-</html>
+</html>      
+<%#= pie_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
+<%= column_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
+                      		                                		
