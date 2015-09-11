@@ -127,6 +127,8 @@
 		</tbody>
 </table>
 
+<h3>Total VehiclePayments of Fuel <%= @vehicle.vehicle_payments.where("amount_type = ?","Fuel").sum :amount_paid %></h3>
+
 <h4>Vehicle Payment Details of Driver Salary </h4>
 
 <table border="1">
@@ -186,7 +188,6 @@
 <%#= pie_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
 <%= column_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
 
-<%#= pie_chart({"Football" => 10, "Basketball" => 5}) %>
 
 <h4>Accessories Details</h4>
 <table border="1">
@@ -296,17 +297,29 @@
 	<%= t.submit %><br/>
 
 <% end -%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Case</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-<%# link_to "Add Vehicle Record ",new_vehicle_record_path %><br/>
+<div class="container">
+  <h3>Vehicle Show</h3>
+  <ul class="nav nav-pills nav-justified">
+    <li><%= link_to "Add New Vehicle", new_vehicle_path %></li>
+    <li><%= link_to "Add New Driver" , new_driver_path %></li>
+    <li><%= link_to "Add New Client " , new_client_path %></li>
+    <li><%= link_to "Add New Vehicle Record", new_vehicle_record_path %></li>
+    <li><%= link_to "Add New Vehicle Payment", new_vehicle_payment_path %></li>
+    <li><%= link_to "Add Accessory ",new_accessory_path %></li>
+  </ul>
+</div>
 
-<%# link_to "Add Vehicle Payment Details ",new_vehicle_payment_path %><br/>
-<%#link_to "Add Accessory Details",new_accessory_path %><br/>
-
-<!--
-<h3> Vehicle Record Details </h3>
-<%= link_to @vehicle.vehicle_records,vehicle_records_path(@vehicle) %>
-
-<h3>Total Vehicle Records <%= @vehicle.vehicle_records.count%></h3>
-
--->
-<%= link_to "Back", vehicles_path %>
+</body>
+</html>
