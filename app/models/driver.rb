@@ -11,6 +11,14 @@ class Driver < ActiveRecord::Base
 
 	validates_numericality_of :mobile_no, :emergency_contact
 
-
+	validate :check_date
 	validates_length_of :mobile_no, :emergency_contact,is: 10
+
+	private
+	def check_date
+		if self.expiration_date < Date.today
+			errors.add(:dl_expiration,"Expiration Date should be greater than today")
+		end
+	end
+
 end

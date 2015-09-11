@@ -20,18 +20,6 @@
 		</tbody>	
 </table>
 
-<!--
-<h4>Vehicle Record Details </h4>
-	<%# for vehicle_record in @vehicle.vehicle_records %> 
-<ul>
-	<li>Vehicle Record type: <%#= vehicle_record.record_type %><br/></li>
-	
-	<li>Vehicle Expiration Date: <%#= vehicle_record.expiration_date %><br/></li>
-
-</ul>
-
--->
-
 <hr>
 
 <h4>Vehicle Record Details </h4>
@@ -194,6 +182,11 @@
 </table>
 
 <hr>
+
+<%#= pie_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
+<%= column_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
+
+<%#= pie_chart({"Football" => 10, "Basketball" => 5}) %>
 
 <h4>Accessories Details</h4>
 <table border="1">

@@ -12,6 +12,6 @@ class VehicleRecord < ActiveRecord::Base
 		if self.expiration_date < Date.today
 			errors.add(:expiration_date,"Expiration Date should be greater than today")
 		end
-			end
+	end
 
 end
