@@ -8,6 +8,7 @@ before_action :authenticate_user!
 		@vehicles = Vehicle.all
 		@drivers = Driver.all
 		@clients = Client.all
+		@locations = Location.all
 		@routes = Route.all
 	end
 
@@ -54,7 +55,7 @@ before_action :authenticate_user!
 	end
 
 	def vehicle_params
-		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no)
+		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no,:driver_id)
 	end 
 
 end

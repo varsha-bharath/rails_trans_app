@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904113838) do
+ActiveRecord::Schema.define(version: 20150914125143) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "name"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20150904113838) do
     t.datetime "image_dl_updated_at"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "role_id"
@@ -67,11 +75,15 @@ ActiveRecord::Schema.define(version: 20150904113838) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "route_locations", force: :cascade do |t|
+    t.integer  "route_id"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "routes", force: :cascade do |t|
     t.string   "name"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "possition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

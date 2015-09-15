@@ -6,6 +6,7 @@
 			<th>Name:</th>
 			<th>Type of the vehicle:</th>
 			<th>Registration number:</th>
+			<th>Driver name</th>
 			<th>Actions </th>
 		</tr>
 	</thead>
@@ -14,6 +15,7 @@
 				<td><%= @vehicle.name %></td>
 				<td><%= @vehicle.vehicle_type %></td>
 				<td><%= @vehicle.reg_no %></td>
+				
 				<td><%= link_to "Edit",edit_vehicle_path(@vehicle.id) %> |
 					<%= link_to "Delete",vehicle_path(@vehicle.id), method: :delete,data:{confirm: "Are you sure"}%> |
 					<%= link_to "Back", vehicles_path %></td>

@@ -1,0 +1,26 @@
+<h3>Add New Location</h3>
+
+<%= form_for @location do |f| %>
+
+
+   <% if @location.errors.any? %>
+   <ul>
+   	   <% for msg in @location.errors.full_messages %>
+   	   <li><%= msg %></li>
+   	   <% end %>
+   </ul>
+   <% end %>
+
+	<label>Name:</label><br/>
+	<%= f.text_field :name %><br/>
+
+
+	<label>Latitude:</label><br/>
+	<%= f.text_field :latitude %><br/>
+
+	<label>Longitude:</label><br/>
+	<%= f.text_field :longitude %><br/><br/>
+
+	<input type="submit" class="btn btn-info" value="Create Location ">
+
+	<% end %>

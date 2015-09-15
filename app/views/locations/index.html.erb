@@ -1,0 +1,36 @@
+<h3>Listing locations</h3>
+
+<br/>
+
+<table border "1">
+  <thead>
+	  <tr> 
+            <th>   </th>
+            <th>Name</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Action</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+           <% @locations.each_with_index do |location,index| %>
+           <tr>
+               <td><%= index + 1 %></td>
+               <td><%= location.name %></td>
+               <td><%= location.latitude %></td>
+               <td><%= location.longitude %></td>
+               <td><%= link_to "Show", location_path(location.id) %> |
+          	    	<%= link_to "Edit", edit_location_path(location.id) %> |
+          	    	<%= link_to "Delete", location_path(location.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
+           </tr> 
+           <% end %>
+  </tbody>
+
+
+</table>
+<br/>
+
+<%= link_to "Add location", new_location_path %><br/><br/>
+
+<%= link_to "Vehicle Details",vehicles_path %>

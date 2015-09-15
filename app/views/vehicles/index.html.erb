@@ -110,6 +110,7 @@
 
 <%= link_to "Add New Client " , new_client_path %><br/><br/>
 
+
 <h3>Listing Routes</h3>
 
 <br/>
@@ -119,21 +120,15 @@
 	  <tr> 
             <th>   </th>
             <th>Name</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Possition</th>
             <th>Action</th>
 	  </tr>
   </thead>
 
   <tbody>
-           <% @routes.each_with_index do |route,index| %>
+          <% @routes.each_with_index do |route,index| %>
            <tr>
                <td><%= index + 1 %></td>
                <td><%= route.name %></td>
-               <td><%= route.latitude %></td>
-               <td><%= route.longitude %></td>
-               <td><%= route.possition %></td>
                <td><%= link_to "Show", route_path(route.id) %> |
           	    	<%= link_to "Edit", edit_route_path(route.id) %> |
           	    	<%= link_to "Delete", route_path(route.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
@@ -144,8 +139,42 @@
 </table><br/>
 
 </div>
-<button type="button" class="btn btn-link"><%= link_to "Add New Route " , new_route_path %></button>
-<%# link_to "Add New Route " , new_route_path %><br/><br/>
+<%#= link_to "Add New Location " ,new_location_path %>
+<%= link_to "Add New Route " , new_route_path %><br/><br/>
+
+<h3>Listing Locations</h3>
+
+<br/>
+<div class="table-responsive">          
+  <table class="table" border="1">
+   <thead>
+    <tr> 
+            <th>   </th>
+            <th>Name</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+          <% @locations.each_with_index do |location,index| %>
+           <tr>
+               <td><%= index + 1 %></td>
+               <td><%= location.name %></td>
+               <td><%= location.latitude %></td>
+               <td><%= location.longitude %></td>
+               <td><%= link_to "Show", location_path(location.id) %> |
+                  <%= link_to "Edit", edit_location_path(location.id) %> |
+                  <%= link_to "Delete", location_path(location.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
+           </tr> 
+           <% end %>
+  </tbody>
+
+</table><br/>
+
+</div>
+<%= link_to "Add New Location " ,new_location_path %>
 
 
 

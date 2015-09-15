@@ -2,6 +2,9 @@ class Vehicle < ActiveRecord::Base
 	has_many :accessories
 	has_many :vehicle_records
 	has_many :vehicle_payments
+	has_many :vehicle_drivers
+	has_many :drivers, through: :vehicle_drivers
+
 	validates_presence_of :name,:vehicle_type,:reg_no,:chassis_no,:engine_no
 	validates_uniqueness_of :reg_no,:chassis_no,:engine_no
 

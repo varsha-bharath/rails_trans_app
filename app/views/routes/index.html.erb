@@ -7,9 +7,6 @@
 	  <tr> 
             <th>   </th>
             <th>Name</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Possition</th>
             <th>Action</th>
 	  </tr>
   </thead>
@@ -19,9 +16,6 @@
            <tr>
                <td><%= index + 1 %></td>
                <td><%= route.name %></td>
-               <td><%= route.latitude %></td>
-               <td><%= route.longitude %></td>
-               <td><%= route.possition %></td>
                <td><%= link_to "Show", route_path(route.id) %> |
           	    	<%= link_to "Edit", edit_route_path(route.id) %> |
           	    	<%= link_to "Delete", route_path(route.id), method: :delete, data: {confirm: "Are you sure?"} %></td>

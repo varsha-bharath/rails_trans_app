@@ -44,7 +44,7 @@ class RoutesController < ApplicationController
 
 	private
 	def	route_params
-        params[:route].permit(:name, :latitude,:longitude, :possition)  
+        params[:route].permit(:id,:name,:location_id)  
     end	
 
 end
