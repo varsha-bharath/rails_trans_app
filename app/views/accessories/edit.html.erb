@@ -10,6 +10,9 @@
 		</ul>
 	<% end -%>
 	
+	<label>Vehicle:</label><br/>
+	<%= t.collection_select :vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/>
+
 	<label>Name of Accessory</label><br/>
 	<%= t.text_field :name %><br/>
 

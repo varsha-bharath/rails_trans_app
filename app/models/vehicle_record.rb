@@ -1,6 +1,6 @@
 class VehicleRecord < ActiveRecord::Base
 	belongs_to :vehicle
-	validates_presence_of :record_type,:expiration_date
+	validates_presence_of :record_type,:expiration_date,:image
 	validate :check_date
 
 	has_attached_file :image

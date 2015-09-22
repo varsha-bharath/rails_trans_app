@@ -1,6 +1,8 @@
-<%# link_to "Edit",edit_vehicle_payment_path(@vehicle_payment.id) %> |
-<%# link_to "Delete",vehicle_payment_path(@vehicle_payment.id), method: :delete,data:{confirm: "Are you sure"}%>
-
+<%= javascript_tag do %>
+  function goBack() {
+    window.history.back();
+}
+<% end %>
 <%= link_to "Vehicle Details",vehicles_path %>
 
 <h3>Vehicle Payment details</h3>
@@ -11,3 +13,5 @@
 	<li>Mode of Payment: <%= @vehicle_payment.mode_of_payment %></li>
 
 </ul>
+<br/>
+<a href="#" onclick="goBack()">Back</a>

@@ -31,6 +31,7 @@ class DriversController < ApplicationController
 		end
 	end
 
+
 	def destroy
 		@driver = Driver.find(params[:id])
 		@driver.destroy
@@ -46,6 +47,6 @@ class DriversController < ApplicationController
 	private
 
 	def driver_params
-		params[:driver].permit(:name, :age, :blood_group, :mobile_no, :address, :emergency_contact, :dl_expiration, :back_ground_check, :image_p, :image_dl)
+		params[:driver].permit(:id,:name, :age,:blood_group, :mobile_no, :address, :emergency_contact, :dl_expiration, :back_ground_check, :image_p, :image_dl)
 	end
 end

@@ -17,7 +17,7 @@
 					<td><%= vehicle.reg_no %></td>	
 					<td><%= link_to "Show",vehicle_path(vehicle.id) %> |
 						<%= link_to "Edit",edit_vehicle_path(vehicle.id) %> |
-						<%= link_to "Delete",vehicle_path(vehicle.id), method: :delete,data:{confirm: "Are you sure"}%>
+						<%= link_to "Delete",vehicle_path(vehicle.id), method: :delete,data:{confirm:"This vehicle is associated with different routes and drivers,are you sure"}%>
 			</td>
 		
 			</tr>
@@ -36,13 +36,8 @@
 		<tr>
 			<th>#</th>
 			<th>Name</th>
-			<th>Age</th>
-			<th>Blood Group</th>
 			<th>Mobile No</th>
 			<th>Emergency Contact</th>
-			<th>Address</th>
-			<th>DL_Expiration</th>
-			<th>Back Ground Check</th>
 			<th>Action</th>
         </tr>
 	</thead>
@@ -52,13 +47,8 @@
           <tr>
           	    <td><%= index + 1 %></td>
           	    <td><%= driver.name %></td>
-          	    <td><%= driver.age %></td>
-          	    <td><%= driver.blood_group %></td>
           	    <td><%= driver.mobile_no %></td>
           	    <td><%= driver.emergency_contact %></td>
-          	    <td><%= driver.address %></td>
-          	    <td><%= driver.dl_expiration.strftime("%d %b %Y ") %></td>
-          	    <td><%= driver.back_ground_check %></td>
           	    <td><%= link_to "Show", driver_path(driver.id) %> |
           	    	<%= link_to "Edit", edit_driver_path(driver.id) %> |
           	    	<%= link_to "Delete", driver_path(driver.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
@@ -82,10 +72,8 @@
            <tr>
            	   <th> </th>
            	   <th>Name</th>
-           	   <th>Point of Contact</th>
            	   <th>Email</th>
            	   <th>Phone</th>
-           	   <th>Location</th>
            	   <th>Action</th>
            </tr>
       </thead>
@@ -95,10 +83,8 @@
                    <tr>
                         <td><%= index + 1 %></td>
                         <td><%= client.name %></td>
-                        <td><%= client.p_o_c %></td>
                         <td><%= client.email %></td>
                         <td><%= client.phone %></td>
-                        <td><%= client.location %></td>
                         <td><%= link_to "Show", client_path(client.id) %> |
           	    	        <%= link_to "Edit", edit_client_path(client.id) %> |
           	    	        <%= link_to "Delete", client_path(client.id), method: :delete, data: {confirm: "Are you sure?"} %></td>  
@@ -151,8 +137,6 @@
     <tr> 
             <th>   </th>
             <th>Name</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
             <th>Action</th>
     </tr>
   </thead>
@@ -162,9 +146,7 @@
            <tr>
                <td><%= index + 1 %></td>
                <td><%= location.name %></td>
-               <td><%= location.latitude %></td>
-               <td><%= location.longitude %></td>
-               <td><%= link_to "Show", location_path(location.id) %> |
+                <td><%= link_to "Show", location_path(location.id) %> |
                   <%= link_to "Edit", edit_location_path(location.id) %> |
                   <%= link_to "Delete", location_path(location.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
            </tr> 

@@ -2,19 +2,14 @@
 
 <%= form_for @driver, :html =>{multipart: true} do |f| %>
 
-<<<<<<< HEAD
-
-   <% if @driver.errors.any? %>
-=======
- 
-	<% if @driver.errors.any? %>
->>>>>>> master
-   <ul>
-   	   <% for msg in @driver.errors.full_messages %>
-   	   <li><%= msg %></li>
-   	   <% end %>
-   </ul>
-   <% end %>
+		<% if @driver.errors.any? %>
+			<h3>These errors prohibited this <%= @driver.class %> from being saved</h3>
+			<ul>
+			<% for msg in @driver.errors.full_messages %>
+				<li><%= msg %></li>
+			<% end -%>
+			</ul>
+		<% end -%>
 
 	<label>Name:</label><br/>
 	<%= f.text_field :name %><br/>
@@ -22,50 +17,30 @@
 	<label>Age</label><br/>
 	<%= f.text_field :age %><br/>
 
-
-<<<<<<< HEAD
 	<label>Blood_Group</label>
 	<%= f.select :blood_group, ["A+", "A-", "B+","B-", "O+", "O-", "AB+", "AB-"], prompt: "Select" %><br/>
-
-
-	<label>Mobile No:</label>
-	+91- <%= f.text_field :mobile_no %><br/>
-
-    
-    <label>Emergency Contact:</label>
-=======
-	<label>Blood_Group</label><br/>
-	<%= f.select :blood_group, ["A+", "A-", "B+","B-", "O+", "O-", "AB+", "AB-"], prompt: "Select" %><br/>
-
 
 	<label>Mobile No:</label><br/>
 	+91- <%= f.text_field :mobile_no %><br/>
 
-
 	<label>Emergency Contact:</label><br/>
->>>>>>> master
 	<%= f.text_field :emergency_contact %><br/>
-
 
 	<label>Address:</label>
 	<%= f.text_area :address %><br/>
 
-
 	<label>Driving Licence</label>
 	<%= f.file_field :image_dl %><br/>
-
-
 
     <label>DL_Expiration:</label>
 	<%= f.date_select :dl_expiration, order: [:day, :month, :year],include_blank: true %><br/>
 
+	<%= check_box_tag "back_ground_check", "yes" %>
+ 	<%= label_tag "BackGroundCheck" %>
 
-	<label>Back Ground Check:</label><br/>
-	<%= f.select :back_ground_check, ["true", "false"], prompt: "Select" %><br/>
-
+ 	<br/>
 	<label>Image</label>
 	<%= f.file_field :image_p %><br/>
-
 
 	<%= f.submit %>
 

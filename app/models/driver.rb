@@ -12,13 +12,18 @@ class Driver < ActiveRecord::Base
 
 	validates_numericality_of :mobile_no, :emergency_contact
 
-	validate :check_date
+	validate :check_date,:check_duplication_of_mobile
 	validates_length_of :mobile_no, :emergency_contact,is: 10
 
 	private
 	def check_date
-		if self.expiration_date < Date.today
+		if self.dl_expiration < Date.today
 			errors.add(:dl_expiration,"Expiration Date should be greater than today")
+		end
+	end
+	def check_duplication_of_mobile
+		if self.mobile_no == self.emergency_contact
+			errors.add(:emergency_contact, " Number shouldnot be same as Mobile number")
 		end
 	end
 

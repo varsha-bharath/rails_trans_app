@@ -1,3 +1,8 @@
+<%= javascript_tag do %>
+  function goBack() {
+    window.history.back();
+}
+<% end %>
 <h3><%= @driver.name %></h3>
 
 <%= link_to "Edit",edit_driver_path(@driver.id) %> | <%= link_to "Delete", driver_path(@driver.id),method: :delete, data: {confirm: "Are you sure?"} %>
@@ -15,3 +20,5 @@ Driving Licence : <%= image_tag @driver.image_dl.url %>  <br/>
 DL_Expiration : <%= @driver.dl_expiration %> Days to renue: [<%= @days_left %>]<br/>
 Back Ground Check : <%= @driver.back_ground_check %><br/><br/>
 <%= link_to "Vehicle Details",vehicles_path %>
+<br/>
+<a href="#" onclick="goBack()">Back</a>

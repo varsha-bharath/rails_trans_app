@@ -33,11 +33,11 @@
 
     <label>DL_Expiration:</label><br/>
 
-	<%= f.date_select :dl_expiration, order: [:day, :month, :year],include_blank: true %><br/>
+	<%= f.date_select :dl_expiration, order: [:day, :month, :year],include_blank: true %><br/><br/>
 
-	<label>Back Ground Check:</label><br/>
-	<%= f.select :back_ground_check, ["true", "false"], prompt: "Select" %><br/>
-
+	<%= check_box_tag "back_ground_check", "yes" %>
+ 	<%= label_tag "BackGroundCheck" %>
+	<br/>
 	<label>Image</label>
 	<%= f.file_field :image_p %><br/>
 

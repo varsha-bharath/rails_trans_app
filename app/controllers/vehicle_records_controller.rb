@@ -6,11 +6,12 @@ def index
 
 	def show
 		begin
-			@vehicle_record = VehicleRecord.find_by(vehicle_id: params[:id])
+			@vehicle_record = VehicleRecord.find(params[:id])
 		rescue ActiveRecord::RecordNotFound
 			redirect_to vehicle_record_path,notice: "Vehicle Record ur looking for doesnot exits"
-			
 		end
+		#@days_left = @vehicle_record.RC - Date.today
+
 		
 	end
 

@@ -13,6 +13,8 @@
 		</ul>
 	<% end -%>
 
+	<label>Vehicle:</label><br/>
+	<%= t.collection_select :vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/>
 
 	<label>Record Type </label><br/>
 	<%= t.select :record_type,["RC","Emission","Insurance"],prompt:"select_record"%><br/>

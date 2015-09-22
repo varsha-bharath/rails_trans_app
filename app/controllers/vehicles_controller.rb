@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
 
-before_action :authenticate_user!
+before_filter :authenticate_user!
 
 #load_and_authorize_resource
 
@@ -26,6 +26,8 @@ before_action :authenticate_user!
 	
 	def show
 		@vehicle = Vehicle.find(params[:id])
+		@accessory = Accessory.new
+		@accessories = Accessory.all 
 		@vehicle_record = VehicleRecord.new
 		@vehicle_records =VehicleRecord.all
 		@vehicle_payment = VehiclePayment.new
@@ -55,7 +57,7 @@ before_action :authenticate_user!
 	end
 
 	def vehicle_params
-		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no,:driver_id)
+		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no,:driver_ids => [])
 	end 
 
 end

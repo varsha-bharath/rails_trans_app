@@ -1,7 +1,14 @@
-
+<%= javascript_tag do %>
+  function goBack() {
+    window.history.back();
+}
+<% end %>
 <%= link_to "Vehicle Details",vehicles_path %>
 
 <h3><%= @accessory.name%></h3>
 
 Name of The Accessory: <%= @accessory.name %><br/>
 Cost : <%= @accessory.cost %><br/>
+<br/>
+<br/>
+<a href="#" onclick="goBack()">Back</a>

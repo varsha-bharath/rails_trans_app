@@ -1,12 +1,17 @@
+<%= javascript_tag do %>
+  function goBack() {
+    window.history.back();
+}
+<% end %>
 <h3><%= @client.name %></h3>
-
-
 
 <%= link_to "Edit",edit_client_path(@client.id) %> | <%= link_to "Delete", client_path(@client.id),method: :delete, data: {confirm: "Are you sure?"} %>
 <hr/>
+<%= link_to "Vehicle Details",vehicles_path %><br/>
 
 Point of Contact : <%= @client.p_o_c %><br/>
 Email : <%= @client.email %><br/>
 Phone : <%= @client.phone %><br/>
 Location : <%= @client.location %><br/> 
-<%= link_to "Vehicle Details",vehicles_path %>
+
+<a href="#" onclick="goBack()">Back</a>

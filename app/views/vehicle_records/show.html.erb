@@ -1,10 +1,16 @@
-<%# link_to "Edit",edit_vehicle_record_path(@vehicle_record.id) %> |
-<%# link_to "Delete",vehicle_record_path(@vehicle_record.id), method: :delete,data:{confirm: "Are you sure"}%>
+<%= javascript_tag do %>
+  function goBack() {
+    window.history.back();
+}
+<% end %>
 <%= link_to "Vehicle Details",vehicles_path %>
 
 <h3>Vehicle Record details</h3>
 <ul>
 	<li>Name:<%= @vehicle_record.record_type %></li>
 	<li>Type of the vehicle: <%= @vehicle_record.expiration_date %><br/></li>
+	<li>Days to renew: <%= @vehicle_record.expiration_date - Date.today %><br/></li>
 	
 </ul>
+<br/>
+<a href="#" onclick="goBack()">Back</a>

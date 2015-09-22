@@ -1,13 +1,14 @@
 class VehiclePaymentsController < ApplicationController
 
-def index
+	def index
 		@vehicle_payments = VehiclePayment.all
+		@vehicle_payments_months = @vehicle_payments.group_by { |t| t.created_at.beginning_of_month }
 	end
 
 	def show
 		
 		begin
-			@vehicle_payment = VehiclePayment.find_by(vehicle_id: params[:id])
+			@vehicle_payment = VehiclePayment.find(params[:id])
 		rescue ActiveRecord::RecordNotFound
 			redirect_to vehicle_payments_path,notice: "Vehicle Payment Details ur looking for doesnot exits"
 		end
@@ -47,6 +48,7 @@ def index
 		redirect_to vehicles_path,notice: "Successfully deleted the vehicle payment details"
 		
 	end
+	
 
 	private 
 

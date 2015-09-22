@@ -7,13 +7,13 @@ class AccessoriesController < ApplicationController
 	def new
 		@accessory = Accessory.new
 	end
-	
+
 	def show
+		
 		begin
-			@accessory = Accessory.find_by(vehicle_id: params[:id])
+			@accessory = Accessory.find(params[:id])
 		rescue ActiveRecord::RecordNotFound
-			redirect_to accessory_path,notice: "Accessory ur looking for doesnot exits"
-			
+			redirect_to accessory_path,notice: "Accessory Details ur looking for doesnot exits"
 		end
 		
 	end
