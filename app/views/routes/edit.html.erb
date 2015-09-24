@@ -18,7 +18,7 @@
         <%= check_box_tag "route[location_ids][]", location.id, @route.location_ids.include?(location.id), :id => dom_id(location) %>
         <%= label_tag dom_id(location), location.name, :class => "uniform" %><br/>
 
-                            <% end %> 
+  <% end %> 
 
   
 	<%= f.submit %>

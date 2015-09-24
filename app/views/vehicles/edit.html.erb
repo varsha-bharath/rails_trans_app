@@ -11,6 +11,12 @@
 
 	<label>Name:</label><br/>
 	<%= f.text_field :name %><br/>
+	
+	<label>Driver </label><br/>
+	<% Driver.all.each do |driver| %>
+        <%= check_box_tag "vehicle[driver_ids][]", driver.id, @vehicle.driver_ids.include?(driver.id), :id => dom_id(driver) %>
+        <%= label_tag dom_id(driver), driver.name, :class => "uniform" %><br/>
+    <% end %>
 
 	<label>Vehicle Type:</label><br/>
 	<%= f.select :vehicle_type,["Sedan","Suv","Minivan"],prompt:"select_vehicle"%><br/>

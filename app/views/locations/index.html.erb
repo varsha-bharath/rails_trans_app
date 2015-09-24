@@ -1,9 +1,9 @@
 <h3>Listing locations</h3>
 
 <br/>
-
-<table border "1">
-  <thead>
+<div class="table-responsive">          
+  <table class="table" border="1">
+      <thead>
 	  <tr> 
             <th>   </th>
             <th>Name</th>
@@ -26,9 +26,8 @@
            </tr> 
            <% end %>
   </tbody>
-
-
 </table>
+</div>
 <br/>
 
 <%= link_to "Add location", new_location_path %><br/><br/>

@@ -15,7 +15,8 @@
 				<td><%= @vehicle.name %></td>
 				<td><%= @vehicle.vehicle_type %></td>
 				<td><%= @vehicle.reg_no %></td>
-				
+				<td><% for driver in @vehicle.drivers %>
+        			<%= driver.name %><br/><% end %></td>
 				<td><%= link_to "Edit",edit_vehicle_path(@vehicle.id) %> |
 					<%= link_to "Delete",vehicle_path(@vehicle.id), method: :delete,data:{confirm: "Are you sure"}%> |
 					<%= link_to "Back", vehicles_path %></td>
@@ -23,8 +24,8 @@
 		</tbody>	
 </table>
 </div>
-<hr>
 
+<hr>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -281,40 +282,6 @@
 					<h3>Total VehiclePayments of Fuel <%= @vehicle.vehicle_payments.where("amount_type = ?","Fuel").sum :amount_paid %></h3>
 
 	</div></div></div></div>
-<div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight">Vehicle Payment Details of Driver Salary</a>
-                </h4>
-            </div>
-            <div id="collapseEight" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <div class="table-responsive">          
-					  <table class="table" border="1">
-						<thead>
-							<tr>
-								<th>Payment Type</th>
-								<th>Amount Paid</th>
-								<th>Payment Date</th>
-								<th>Mode of Payment</th>
-								<th>Actions </th>
-							</tr>
-						</thead>
-							<tbody>
-							<% for vehicle_payment in @vehicle.vehicle_payments.where("amount_type = ?","Driver-salary") %> 
-							<tr>
-								<td> <%= vehicle_payment.amount_type %></td>
-								<td><%= vehicle_payment.amount_paid %></td>	
-								<td><%= vehicle_payment.payment_date %></td>
-								<td><%= vehicle_payment.mode_of_payment %></td>
-								<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.id) %> |
-									<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.id) %> |
-									<%= link_to "Delete",vehicle_payment_path(vehicle_payment.id), method: :delete,data:{confirm: "Are you sure"}%></td>
-							</tr>
-							<% end %>	
-						</tbody>
-					</table>
-	</div></div></div></div>    
 
 	<div class="panel panel-default">
             <div class="panel-heading">
@@ -351,13 +318,48 @@
 					</table>
 </div></div></div></div>
 
-    <div class="panel panel-default">
-           <div class="panel-heading">
+	<div class="panel panel-default">
+            <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">Add Vehicle Payment Details</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">Vehicle Payment Details </a>
                 </h4>
             </div>
             <div id="collapseTen" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="table-responsive">          
+					  <table class="table" border="1">
+						<thead>
+							<tr>
+								<th>Payment Type</th>
+								<th>Amount Paid</th>
+								<th>Payment Date</th>
+								<th>Mode of Payment</th>
+								<th>Actions </th>
+							</tr>
+						</thead>
+							<tbody>
+								<% for vehicle_payment in @vehicle.vehicle_payments %> 
+								<tr>
+								<td> <%= vehicle_payment.amount_type %></td>
+								<td><%= vehicle_payment.amount_paid %></td>	
+								<td><%= vehicle_payment.payment_date %></td>
+								<td><%= vehicle_payment.mode_of_payment %></td>
+								<td><%= link_to "Show",vehicle_payment_path(vehicle_payment.id) %> |
+									<%= link_to "Edit",edit_vehicle_payment_path(vehicle_payment.id) %> |
+									<%= link_to "Delete",vehicle_payment_path(vehicle_payment.id), method: :delete,data:{confirm: "Are you sure"}%></td>
+								</tr>
+								<% end %>	
+							</tbody>
+					</table>
+</div></div></div></div>
+
+    <div class="panel panel-default">
+           <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">Add Vehicle Payment Details</a>
+                </h4>
+            </div>
+            <div id="collapseEleven" class="panel-collapse collapse">
                 <div class="panel-body">
                     <%= form_for @vehicle_payment, html: { multipart: true } do |t| %>
 
@@ -371,7 +373,7 @@
 					<% end -%>
 					
 					<label>Payment Type </label><br/>
-					<%= t.select :amount_type,["Down-payment","EMI","Fuel","Driver salary","Service"],prompt:"select_record"%><br/>
+					<%= t.select :amount_type,["Down-payment","EMI","Fuel","Service"],prompt:"select_record"%><br/>
 
 					<label>Amount Paid </label><br/>
 					<%= t.text_field :amount_paid %><br/>
@@ -399,5 +401,10 @@
 </body>
 </html>      
 <%#= pie_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
-<%= column_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
-                      		                                		
+<%#= column_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
+
+
+<p>Total Vehicle payments <strong>
+
+<%= @vehicle.vehicle_payments.map(&:amount_paid).sum %></strong></p>
+<%#= @vehicle.vehicle_payments.by_month.count %>

@@ -10,7 +10,7 @@
 	<li>Name:<%= @vehicle_record.record_type %></li>
 	<li>Type of the vehicle: <%= @vehicle_record.expiration_date %><br/></li>
 	<li>Days to renew: <%= @vehicle_record.expiration_date - Date.today %><br/></li>
-	
+	<li>Record Image : <%= image_tag @vehicle_record.image.url %></li>
 </ul>
 <br/>
 <a href="#" onclick="goBack()">Back</a>

@@ -2,7 +2,7 @@ class VehiclePaymentsController < ApplicationController
 
 	def index
 		@vehicle_payments = VehiclePayment.all
-		@vehicle_payments_months = @vehicle_payments.group_by { |t| t.created_at.beginning_of_month }
+
 	end
 
 	def show

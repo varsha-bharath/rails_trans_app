@@ -1,13 +1,3 @@
 <%= link_to "Vehicle Details",vehicles_path %>
 
 
-<% @vehicle_payments_months.sort.each do |month, vehicle_payments| %>
-  <h2><%= month.strftime('%B') %></h2>
-  <% for vehicle_payment in vehicle_payments %>
-    <div class="vehicle paymets">
-      <strong><%= vehicle_payment.amount_type %></strong>
-   <%= vehicle_payment.created_at.to_date.to_s(:long) %>
-    </div>
-  <% end %>
-<% end %>
-

@@ -29,10 +29,10 @@
           	    <td><%= driver.mobile_no %></td>
           	    <td><%= driver.emergency_contact %></td>
           	    <td><%= driver.address %></td>
-                <td><%= driver.image_dl %></td>
+                <td><%= image_tag driver.image_dl %></td>
           	    <td><%= driver.dl_expiration.strftime("%d %b %Y ") %></td>
           	    <td><%= driver.back_ground_check %></td>
-                <td><%= driver.image_p %></td>
+                <td><%= image_tag driver.image_p %></td>
           	    <td><%= link_to "Show", driver_path(driver.id) %> |
           	    	<%= link_to "Edit", edit_driver_path(driver.id) %> |
           	    	<%= link_to "Delete", driver_path(driver.id), method: :delete, data: {confirm: "Are you sure?"} %></td>

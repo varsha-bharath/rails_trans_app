@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'tzinfo-data'
 # gem 'therubyracer', platforms: :ruby
 gem 'groupdate'
-
+gem 'by_star', :git => "git://github.com/radar/by_star"
 gem 'devise'
 
 gem 'faker'

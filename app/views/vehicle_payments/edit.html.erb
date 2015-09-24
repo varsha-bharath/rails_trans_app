@@ -17,7 +17,7 @@
 	<%= t.collection_select :vehicle_id,Vehicle.all,:id,:reg_no,prompt: "Select_Vehicle" %><br/><br/>
 	
 	<label>Payment Type </label><br/>
-	<%= t.select :amount_type,["Down-payment","EMI","Fuel","Driver-salary","Service"],prompt:"select_record"%><br/>
+	<%= t.select :amount_type,["Down-payment","EMI","Fuel","Service"],prompt:"select_record"%><br/>
 
 	<label>Amount Paid </label><br/>
 	<%= t.text_field :amount_paid %><br/>

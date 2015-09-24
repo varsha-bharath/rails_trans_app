@@ -25,9 +25,11 @@ before_filter :authenticate_user!
 	end
 	
 	def show
+		@driver = Driver.new
+		@drivers =Driver.all
 		@vehicle = Vehicle.find(params[:id])
 		@accessory = Accessory.new
-		@accessories = Accessory.all 
+		@accessories = Accessory.all
 		@vehicle_record = VehicleRecord.new
 		@vehicle_records =VehicleRecord.all
 		@vehicle_payment = VehiclePayment.new
@@ -36,7 +38,7 @@ before_filter :authenticate_user!
 	end
 	
 	def edit
-		@vehicle = Vehicle.find(params[:id])
+		@vehicle = Vehicle.find(params[:id] )
 
 	end
 	
@@ -57,7 +59,7 @@ before_filter :authenticate_user!
 	end
 
 	def vehicle_params
-		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no,:driver_ids => [])
+		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no,{:driver_ids => []})
 	end 
 
 end

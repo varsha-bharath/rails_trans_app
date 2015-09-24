@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914125143) do
+ActiveRecord::Schema.define(version: 20150924121658) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "name"
@@ -107,17 +107,17 @@ ActiveRecord::Schema.define(version: 20150914125143) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vehicle_clients", force: :cascade do |t|
-    t.integer  "vehicles_id"
-    t.integer  "clients_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "vehicle_id"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vehicle_drivers", force: :cascade do |t|
-    t.integer  "vehicles_id"
-    t.integer  "drivers_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "vehicle_id"
+    t.integer  "driver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vehicle_payments", force: :cascade do |t|
@@ -147,10 +147,10 @@ ActiveRecord::Schema.define(version: 20150914125143) do
   end
 
   create_table "vehicle_routes", force: :cascade do |t|
-    t.integer  "vehicles_id"
-    t.integer  "routes_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "vehicle_id"
+    t.integer  "route_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vehicles", force: :cascade do |t|
