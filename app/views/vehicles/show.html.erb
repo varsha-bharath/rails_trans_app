@@ -25,6 +25,33 @@
 </table>
 </div>
 
+<div class="table-responsive">          
+  <table class="table" border="1">
+	<thead>
+		<tr>
+			<th>RC Expiration:</th>
+			<th>Rc Image:</th>
+			<th>Insurance Expiration:</th>
+			<th>Insurance Image:</th>
+			<th>Emission Expiration:</th>
+			<th>Emission Image:</th>
+		</tr>
+	</thead>
+		<tbody>
+			<tr>
+				<td><%= @vehicle.rc_expiration_date %></td>
+				<td><%= image_tag @vehicle.rc_image.url %></td>
+				<td><%= @vehicle.insurance_expiration_date %></td>
+				<td><%= image_tag @vehicle.insurance_image.url %></td>
+				<td><%= @vehicle.emission_expiration_date %></td>
+				<td><%= image_tag @vehicle.emission_image.url %></td>	
+			</tr>
+		</tbody>	
+</table>
+</div>
+
+
+
 <hr>
 <!DOCTYPE html>
 <html lang="en">

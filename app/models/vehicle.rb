@@ -7,6 +7,12 @@ class Vehicle < ActiveRecord::Base
 
 	validates_presence_of :name,:vehicle_type,:reg_no,:chassis_no,:engine_no
 	validates_uniqueness_of :reg_no,:chassis_no,:engine_no
+	
+	has_attached_file :rc_image
+	has_attached_file :insurance_image
+	has_attached_file :emission_image
+  	#do_not_validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+	do_not_validate_attachment_file_type :rc_image, :insurance_image, :emission_image
 
 	before_destroy :delete_vehicle_records,:delete_accessories,:delete_vehicle_payments
 	
