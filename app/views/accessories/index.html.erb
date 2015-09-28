@@ -1,5 +1,8 @@
 <% for accessory in @accessories %>
 	Name of The Accessory: <%= accessory.name %><br/>
 	Cost : <%= accessory.cost %><br/>
+	Model : <%= accessory.model %><br/>
+	Serial no: <%= accessory.serial_no %><br/>
+	Invoice image: <%= image_tag accessory.invoice_image.url %><br/>
 <% end %>
 <%= link_to "Vehicle Details",vehicles_path %>

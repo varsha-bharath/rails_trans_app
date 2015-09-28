@@ -25,6 +25,33 @@
 </table>
 </div>
 
+<div class="table-responsive">          
+  <table class="table" border="1">
+	<thead>
+		<tr>
+			<th>RC Expiration:</th>
+			<th>Rc Image:</th>
+			<th>Insurance Expiration:</th>
+			<th>Insurance Image:</th>
+			<th>Emission Expiration:</th>
+			<th>Emission Image:</th>
+		</tr>
+	</thead>
+		<tbody>
+			<tr>
+				<td><%= @vehicle.rc_expiration_date %></td>
+				<td><%= image_tag @vehicle.rc_image.url %></td>
+				<td><%= @vehicle.insurance_expiration_date %></td>
+				<td><%= image_tag @vehicle.insurance_image.url %></td>
+				<td><%= @vehicle.emission_expiration_date %></td>
+				<td><%= image_tag @vehicle.emission_image.url %></td>	
+			</tr>
+		</tbody>	
+</table>
+</div>
+
+
+
 <hr>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +84,9 @@
 							<tr>
 								<th>Name Of Accessory</th>
 								<th>Cost</th>
+								<th>Model</th>
+								<th>Serial No</th>
+								<th>Invoice image</th>
 								<th>Actions </th>
 								
 							</tr>
@@ -66,6 +96,9 @@
 									<tr>
 										<td><%= accessory.name %></td>
 										<td><%= accessory.cost %></td>
+										<td><%= accessory.model %></td>
+										<td><%= accessory.serial_no %></td>
+										<td><%= image_tag accessory.invoice_image.url %></td>
 										<td><%= link_to "Show",accessory_path(accessory.id) %>|
 											<%= link_to "Edit",edit_accessory_path(accessory.id) %> |
 											<%= link_to "Delete",accessory_path(accessory.id), method: :delete,data:{confirm: "Are you sure"}%></td>
@@ -85,7 +118,7 @@
             <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
 				
-					<%= form_for Accessory.new do |t| %>
+					<%= form_for Accessory.new , html: { multipart: true } do |t| %>
 		
 					<label>Name of Accessory</label><br/>
 					<%= t.text_field :name %><br/>
@@ -95,6 +128,12 @@
 
 					<label>Model</label></br>
 					<%= t.text_field :model %><br/><br/>
+					
+					<label>Serial No</label></br>
+					<%= t.text_field :serial_no %><br/><br/>
+					
+					<label>Invoice Image</label></br>
+					<%= t.file_field :invoice_image %><br/><br/>
 
 					<%= t.hidden_field :vehicle_id, value: @vehicle.id %><br/>
 

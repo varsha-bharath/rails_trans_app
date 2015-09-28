@@ -1,6 +1,6 @@
 <h3>Vehicles</h3>
 
-<%= form_for @vehicle do |t| %>
+<%= form_for @vehicle , html: { multipart: true } do |t| %>
 	<% if @vehicle.errors.any? %>
 		<h3>These errors prohibited this <%= @vehicle.class %> from being saved</h3>
 		<ul>
@@ -10,7 +10,6 @@
 		</ul>
 	<% end -%>
 
-	
 	<label>Name: </label><br/>
 	<%= t.text_field :name %><br/>
 	
@@ -31,6 +30,24 @@
 
 	<label>Engine Number: </label><br/>
 	<%= t.text_field :engine_no %><br/><br/>
+	
+	<label>RC Expiration Date</label><br/>
+	<%= t.date_select :rc_expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+	
+	<label>RC Image </label><br/>
+	<%= t.file_field :rc_image %><br/>
+	
+	<label>Insurance Expiration Date</label><br/>
+	<%= t.date_select :insurance_expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+	
+	<label>Insurance Image </label><br/>
+	<%= t.file_field :insurance_image %><br/>
+
+	<label>Emission Expiration Date</label><br/>
+	<%= t.date_select :emission_expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+	
+	<label> Image </label><br/>
+	<%= t.file_field :emission_image %><br/>
 
 	<input type="submit" class="btn btn-info" value="Create Vehicle">
 	

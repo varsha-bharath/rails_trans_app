@@ -59,7 +59,7 @@ before_filter :authenticate_user!
 	end
 
 	def vehicle_params
-		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no,{:driver_ids => []})
+		params[:vehicle].permit(:id,:name,:vehicle_type,:reg_no,:chassis_no,:engine_no,{:driver_ids => []}, :rc_image, :insurance_image, :emission_image, :rc_expiration_date, :insurance_expiration_date, :emission_expiration_date)
 	end 
 
 end

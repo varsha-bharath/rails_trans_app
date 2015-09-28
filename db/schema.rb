@@ -11,15 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924121658) do
+ActiveRecord::Schema.define(version: 20150925093502) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "name"
     t.float    "cost"
     t.string   "model"
     t.integer  "vehicle_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "serial_no"
+    t.string   "invoice_image_file_name"
+    t.string   "invoice_image_content_type"
+    t.integer  "invoice_image_file_size"
+    t.datetime "invoice_image_updated_at"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -159,8 +164,23 @@ ActiveRecord::Schema.define(version: 20150924121658) do
     t.string   "reg_no"
     t.string   "chassis_no"
     t.string   "engine_no"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.date     "rc_expiration_date"
+    t.date     "insurance_expiration_date"
+    t.date     "emission_expiration_date"
+    t.string   "rc_image_file_name"
+    t.string   "rc_image_content_type"
+    t.integer  "rc_image_file_size"
+    t.datetime "rc_image_updated_at"
+    t.string   "insurance_image_file_name"
+    t.string   "insurance_image_content_type"
+    t.integer  "insurance_image_file_size"
+    t.datetime "insurance_image_updated_at"
+    t.string   "emission_image_file_name"
+    t.string   "emission_image_content_type"
+    t.integer  "emission_image_file_size"
+    t.datetime "emission_image_updated_at"
   end
 
 end
