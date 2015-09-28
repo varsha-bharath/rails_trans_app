@@ -1,6 +1,6 @@
 class VehicleRecordsController < ApplicationController
 
-def index
+	def index
 		@vehicle_records = VehicleRecord.all
 	end
 
@@ -54,6 +54,4 @@ def index
 	def vehicle_record_params
 		params[:vehicle_record].permit(:id,:record_type, :expiration_date, :vehicle_id, :image)
 	end 
-
 end
-
