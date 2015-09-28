@@ -50,7 +50,7 @@ class AccessoriesController < ApplicationController
 	private 
 
 	def accessory_params
-		params[:accessory].permit(:id,:name,:cost,:model,:vehicle_id)
+		params[:accessory].permit(:id,:name,:cost,:model,:vehicle_id, :serial_no, :invoice_image)
 	end 
 
 end

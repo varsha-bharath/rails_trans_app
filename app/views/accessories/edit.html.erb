@@ -1,6 +1,6 @@
 <h3>Accessoires </h3>
 
-<%= form_for @accessory do |t| %>
+<%= form_for @accessory, html: { multipart: true } do |t| %>
 	<% if @accessory.errors.any? %>
 		<h3>These errors prohibited this <%= @accessory.class %> from being saved</h3>
 		<ul>
@@ -21,6 +21,12 @@
 
 	<label>Model</label></br>
 	<%= t.text_field :model %><br/><br/>
+	
+	<label>Serial No</label></br>
+	<%= t.text_field :serial_no %><br/><br/>
+	
+	<label>Invoice Image</label></br>
+	<%= t.file_field :invoice_image %><br/><br/>
 
 	<%= t.submit "Submit"%><br/>
 	
