@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925093502) do
+ActiveRecord::Schema.define(version: 20150928071100) do
 
   create_table "accessories", force: :cascade do |t|
     t.string   "name"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 20150925093502) do
     t.string   "image_dl_content_type"
     t.integer  "image_dl_file_size"
     t.datetime "image_dl_updated_at"
+    t.string   "pan"
+    t.string   "bank_account"
+    t.string   "ifsc_code"
+    t.integer  "driver_salary"
   end
 
   create_table "locations", force: :cascade do |t|

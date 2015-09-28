@@ -7,6 +7,7 @@ class Vehicle < ActiveRecord::Base
 
 	validates_presence_of :name,:vehicle_type,:reg_no,:chassis_no,:engine_no
 	validates_uniqueness_of :reg_no,:chassis_no,:engine_no
+	validate :check_date
 	
 	has_attached_file :rc_image
 	has_attached_file :insurance_image
@@ -17,6 +18,12 @@ class Vehicle < ActiveRecord::Base
 	before_destroy :delete_vehicle_records,:delete_accessories,:delete_vehicle_payments
 	
 	private
+	
+	def check_date
+		if self.expiration_date < Date.today
+			errors.add(:expiration_date,"Expiration Date should be greater than today")
+		end
+	end
 	
 	def delete_vehicle_records
 			VehicleRecord.delete(self.vehicle_record_ids) 		

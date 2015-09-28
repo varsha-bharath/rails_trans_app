@@ -27,20 +27,31 @@
 
 	<label>Address:</label><br/>
 	<%= f.text_area :address %><br/>
+	
+	<label>Driver Salary</label>
+	<%= f.text_field :driver_salary %><br/>
 
-	<label>Driving Licence</label>
+	<label>Driver Licence</label>
 	<%= f.file_field :image_dl %><br/>
 
     <label>DL_Expiration:</label><br/>
-
 	<%= f.date_select :dl_expiration, order: [:day, :month, :year],include_blank: true %><br/><br/>
 
 	<%= check_box_tag "back_ground_check", "yes" %>
- 	<%= label_tag "BackGroundCheck" %>
-	<br/>
+ 	
+ 	<%= label_tag "BackGroundCheck" %><br/>
 	<label>Image</label>
 	<%= f.file_field :image_p %><br/>
-
+	
+	<label>Driver PAN</label>
+	<%= f.text_field :pan %><br/>
+	
+	<label>Driver Account No</label>
+	<%= f.text_field :bank_account %><br/>
+	
+	<label>Driver IFSC code </label>
+	<%= f.text_field :ifsc_code %><br/>
+	
 	<input type="submit" class="btn btn-info" value="Create Driver">
 	
 <% end %>

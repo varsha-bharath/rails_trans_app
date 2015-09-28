@@ -8,7 +8,7 @@ class Driver < ActiveRecord::Base
 	has_many :vehicle_drivers
 	has_many :vehicles, through: :vehicle_drivers
 
-	validates_presence_of :name, :age, :blood_group, :mobile_no, :address, :emergency_contact, :dl_expiration,:image_dl,:image_p
+	validates_presence_of :name, :age, :blood_group, :mobile_no, :address, :emergency_contact, :dl_expiration,:image_dl,:image_p, :driver_salary
 
 	validates_numericality_of :mobile_no, :emergency_contact
 
