@@ -11,6 +11,7 @@ class Driver < ActiveRecord::Base
 	validates_presence_of :name, :age, :blood_group, :mobile_no, :address, :emergency_contact, :dl_expiration,:image_dl,:image_p, :driver_salary
 
 	validates_numericality_of :mobile_no, :emergency_contact
+	validates_uniqueness_of :mobile_no
 
 	validate :check_date,:check_duplication_of_mobile
 	validates_length_of :mobile_no, :emergency_contact,is: 10
