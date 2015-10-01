@@ -30,8 +30,8 @@ before_filter :authenticate_user!
 		@vehicle = Vehicle.find(params[:id])
 		@accessory = Accessory.new
 		@accessories = Accessory.all
-		@vehicle_record = VehicleRecord.new
-		@vehicle_records =VehicleRecord.all
+		@vehicle_payments = VehiclePayment.all
+		@vehicle_payment_months = @vehicle_payments.group_by{|t| t.payment_date.beginning_of_month }
 		@vehicle_payment = VehiclePayment.new
 		@vehicle_payments =VehiclePayment.all
 

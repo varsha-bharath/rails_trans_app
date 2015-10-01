@@ -19,6 +19,9 @@ gem 'devise'
 
 gem 'faker'
 
+
+#gem 'sql_funk'
+
 gem 'cancan'
 
 gem 'chartkick'

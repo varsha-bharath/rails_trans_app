@@ -31,23 +31,23 @@
 	<%= f.text_field :engine_no %><br/>
 	
 	<label>RC Expiration Date</label><br/>
-	<%= t.date_select :rc_expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
-	
+	<%= f.date_select :rc_expiration_date,order:[:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+
 	<label>RC Image </label><br/>
-	<%= t.file_field :rc_image %><br/>
+	<%= f.file_field :rc_image %><br/>
 	
 	<label>Insurance Expiration Date</label><br/>
-	<%= t.date_select :insurance_expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+	<%= f.date_select :insurance_expiration_date,order:[:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
 	
 	<label>Insurance Image </label><br/>
-	<%= t.file_field :insurance_image %><br/>
+	<%= f.file_field :insurance_image %><br/>
 
 	<label>Emission Expiration Date</label><br/>
-	<%= t.date_select :emission_expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
+	<%= f.date_select :emission_expiration_date,order:[:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
 	
 	<label>Emission Image </label><br/>
-	<%= t.file_field :emission_image %><br/>
-
-	<%= f.submit "Submit"%>
-
+	<%= f.file_field :emission_image %><br/>
+	
+	<input type="submit" class="btn btn-info" value="Create Vehicle Details">
+	
 <% end -%>

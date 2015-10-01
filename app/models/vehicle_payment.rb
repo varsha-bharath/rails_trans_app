@@ -5,11 +5,7 @@ class VehiclePayment < ActiveRecord::Base
 	has_attached_file :image
   	#do_not_validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 	do_not_validate_attachment_file_type :image
- 	before_save :month
- 	
-	def month  
-		self.created_at.strftime('%M')
-	end
+ 	#before_save :month
 
 private
 	def check_date
@@ -17,6 +13,5 @@ private
 			errors.add(:payment_date," should Not be greater than today")
 		end
 	end
-
-
+		
 end

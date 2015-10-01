@@ -2,6 +2,7 @@ class VehiclePaymentsController < ApplicationController
 
 	def index
 		@vehicle_payments = VehiclePayment.all
+		#@vehicle_payment_months = @vehicle_payments.group_by{|t| t.payment_date.beginning_of_month }
 
 	end
 
@@ -9,6 +10,9 @@ class VehiclePaymentsController < ApplicationController
 		
 		begin
 			@vehicle_payment = VehiclePayment.find(params[:id])
+			@vehicle_payments = VehiclePayment.all
+			@vehicle_payment_months = @vehicle_payments.group_by{|t| t.payment_date.beginning_of_month }
+			
 		rescue ActiveRecord::RecordNotFound
 			redirect_to vehicle_payments_path,notice: "Vehicle Payment Details ur looking for doesnot exits"
 		end
@@ -25,7 +29,7 @@ class VehiclePaymentsController < ApplicationController
 	end
 
 	def edit
-		@vehicle_payment = VehiclePayment.find_by(vehicle_id: params[:id])
+		@vehicle_payment = VehiclePayment.find(params[:id])
 	end
 
 	def update
@@ -43,7 +47,7 @@ class VehiclePaymentsController < ApplicationController
 	end
 
 	def destroy
-		@vehicle_payment = VehiclePayment.find_by(vehicle_id: params[:id])
+		@vehicle_payment = VehiclePayment.find(params[:id])
 		@vehicle_payment.destroy
 		redirect_to vehicles_path,notice: "Successfully deleted the vehicle payment details"
 		

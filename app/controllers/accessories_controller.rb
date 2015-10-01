@@ -28,7 +28,7 @@ class AccessoriesController < ApplicationController
 	end
 
 	def edit
-		@accessory = Accessory.find_by(vehicle_id: params[:id])
+		@accessory = Accessory.find(params[:id])
 	end
 
 	def update
@@ -41,7 +41,7 @@ class AccessoriesController < ApplicationController
 	end
 
 	def destroy
-		@accessory = Accessory.find_by(vehicle_id: params[:id])
+		@accessory = Accessory.find(params[:id])
 		@accessory.destroy
 		redirect_to vehicles_path,notice: "Successfully deleted the Accessory details"
 		

@@ -5,9 +5,9 @@ class Vehicle < ActiveRecord::Base
 	has_many :vehicle_drivers
 	has_many :drivers, through: :vehicle_drivers
 
-	validates_presence_of :name,:vehicle_type,:reg_no,:chassis_no,:engine_no
+	validates_presence_of :name,:vehicle_type,:reg_no,:chassis_no,:engine_no,:rc_expiration_date,:insurance_expiration_date,:emission_expiration_date
 	validates_uniqueness_of :reg_no,:chassis_no,:engine_no
-	validate :check_date
+	validate :emission_date,:rc_date,:insurance_date
 	
 	has_attached_file :rc_image
 	has_attached_file :insurance_image
@@ -19,9 +19,21 @@ class Vehicle < ActiveRecord::Base
 	
 	private
 	
-	def check_date
-		if self.expiration_date < Date.today
-			errors.add(:expiration_date,"Expiration Date should be greater than today")
+	def emission_date
+		if self.emission_expiration_date < Date.today
+			errors.add(:emission_expiration_date,"Expiration Date should be greater than today")
+		end
+	end
+	
+	def rc_date
+		if self.rc_expiration_date < Date.today
+			errors.add(:rc_expiration_date,"Expiration Date should be greater than today")
+		end
+	end
+	
+	def insurance_date
+		if self.insurance_expiration_date < Date.today
+			errors.add(:insurance_expiration_date,"Expiration Date should be greater than today")
 		end
 	end
 	

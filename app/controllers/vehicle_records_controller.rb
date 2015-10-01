@@ -25,7 +25,7 @@ class VehicleRecordsController < ApplicationController
 	end
 
 	def edit
-		@vehicle_record = VehicleRecord.find_by(vehicle_id: params[:id])
+		@vehicle_record = VehicleRecord.find(params[:id])
 	end
 
 	def update
@@ -43,7 +43,7 @@ class VehicleRecordsController < ApplicationController
 	end
 
 	def destroy
-		@vehicle_record = VehicleRecord.find_by(vehicle_id: params[:id])
+		@vehicle_record = VehicleRecord.find(params[:id])
 		@vehicle_record.destroy
 		redirect_to vehicles_path,notice: "Successfully deleted the vehicle details"
 		

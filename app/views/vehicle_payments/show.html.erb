@@ -14,4 +14,9 @@
 
 </ul>
 <br/>
+
+<% @vehicle_payment_months.each do |month,vehicle_payments| %>
+<%= month.strftime("%B") %>
+<%= vehicle_payments.map(&:amount_paid).sum %><br>
+<% end -%>
 <a href="#" onclick="goBack()">Back</a>

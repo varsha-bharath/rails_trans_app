@@ -143,80 +143,7 @@
                 </div>
             </div>
     </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Vehicle Record Details </a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-                      <div class="table-responsive">          
-						  <table class="table" border="1">
-							<thead>
-								<tr>
-									<th>Vehicle Record type</th>
-									<th>Vehicle Expiration Date</th>
-									<th>Record Image</th>
-									<th>Actions </th>
-								</tr>
-							</thead>
-								<tbody>
-									<% for vehicle_record in @vehicle.vehicle_records %>
-										<tr>					
-											<td><%=  vehicle_record.record_type %></td>
-											<td><%= vehicle_record.expiration_date %></td>
-											<td><%= image_tag vehicle_record.image.url%></td>
-											<td><%= link_to "Show",vehicle_record_path(vehicle_record.id) %> |
-												<%= link_to "Edit",edit_vehicle_record_path(vehicle_record.id) %> |
-												<%= link_to "Delete",vehicle_record_path(vehicle_record.id), method: :delete,data:{confirm: "Are you sure"}%></td>
-										</tr>
-										<% end %>
-									</tbody>
-						</table>
-				</div>
-             </div>
-            </div>
-        </div>
 
-   <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Add Vehicle Record </a>
-                </h4>
-            </div>
-            <div id="collapseFour" class="panel-collapse collapse">
-                <div class="panel-body">
-                   
-				<%= form_for @vehicle_record , html: { multipart: true } do |t|%>
-
-					<% if @vehicle_record.errors.any? %>
-						<h3>These errors prohibited this <%= @vehicle_record.class %> from being saved</h3>
-						<ul>
-						<% for msg in @vehicle_record.errors.full_messages %>
-							<li><%= msg %></li>
-							<% end -%>
-						</ul>
-					<% end -%>
-
-					<label>Record Type </label><br/>
-					<%= t.select :record_type,["RC","Emission","Insurance"],prompt:"select_record"%><br/><br/>
-
-					<label>Expiration Date</label><br/>
-					<%= t.date_select :expiration_date,order: [:day,:month,:year],include_blank:true,start_year:Date.today.year %><br/>
-					
-					<label>Record Image </label><br/>
-					<%= t.file_field :image %><br/>
-					
-					<%= t.hidden_field :vehicle_id,value: @vehicle.id %><br/>
-					
-					<input type="submit" class="btn btn-info" value="Create Vehicle Record">
-					
-				<% end -%>
-
-                </div>
-            </div>
-        </div>
 <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -442,8 +369,12 @@
 <%#= pie_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
 <%#= column_chart @vehicle.vehicle_payments.group(:amount_type).sum(:amount_paid) %>
 
-
-<p>Total Vehicle payments <strong>
-
+<p>Total Vehicle payments Of this vehicle is <strong>
 <%= @vehicle.vehicle_payments.map(&:amount_paid).sum %></strong></p>
-<%#= @vehicle.vehicle_payments.by_month.count %>
+
+<% @vehicle_payment_months.each do |month,vehicle_payment | %>
+<%= month.strftime("%B") %>
+<%= vehicle_payment.map(&:amount_paid).sum %><br>
+<% end -%>
+
+
