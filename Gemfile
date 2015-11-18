@@ -19,6 +19,7 @@ gem 'devise'
 
 gem 'faker'
 
+gem 'crono'
 
 #gem 'sql_funk'
 
